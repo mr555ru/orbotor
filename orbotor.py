@@ -45,9 +45,6 @@ if __name__ == "__main__":
         draw_planet=True
     else:
         draw_planet=False
-    if "--funbots" in sys.argv:
-        bot_names = bot_names[:12] + ['Realer09', 'AndreyWasHere', 'PelMen', 'Monodictor']
-        random.shuffle(bot_names)
     if "--nohell" in sys.argv:
         hell = (0, 0)
     elif "--lesshell" in sys.argv:

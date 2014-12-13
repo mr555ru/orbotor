@@ -36,7 +36,7 @@ class HellDebris(Debris):
         self.dy = - v * math.sin(vang) + (random.randint(0,40)-20)/80.0
 
     def get_collision(self, other, vel, ang):
-        if other.repr != "Spark" not GCD_Singleton.loosening:
+        if other.repr != "Spark" and not GCD_Singleton.loosening:
             if random.randint(0,2) == 0:
                 m = 0
                 for i in xrange(random.randint(2, 4)):

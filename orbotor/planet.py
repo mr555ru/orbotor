@@ -15,6 +15,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import math
+import os
 
 from static_functions import *
 from camera import Camerable

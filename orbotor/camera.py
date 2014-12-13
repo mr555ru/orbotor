@@ -38,7 +38,9 @@ class Camera():
             x = (obj.x - self.x)*self.zoom
             y = (obj.y - self.y)*self.zoom
             
-            isoncamera = x+self.w/2 > -obj.r*self.zoom and y+self.h/2 > -obj.r*self.zoom and x+self.w/2 < self.maxwh+obj.r*self.zoom and y+self.h/2 < self.maxwh+obj.r*self.zoom
+            #isoncamera = x+self.w/2 > -obj.r*self.zoom and y+self.h/2 > -obj.r*self.zoom and x+self.w/2 < self.maxwh+obj.r*self.zoom and y+self.h/2 < self.maxwh+obj.r*self.zoom
+            
+            isoncamera = x+obj.r*self.zoom > -self.maxwh/2 and y+obj.r*self.zoom > -self.maxwh/2 and x-obj.r*self.zoom < self.maxwh/2 and y-obj.r*self.zoom < self.maxwh/2
             
             if isoncamera or obj.repr == "Planet":    
                 r = math.sqrt(x**2+y**2)

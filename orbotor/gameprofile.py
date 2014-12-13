@@ -86,7 +86,7 @@ class Profile():
         if self.p2:
             self.bg1 = Surface((wwidth, wheight/2))
             self.bg2 = Surface((wwidth, wheight/2))
-            self.cam2 = camera.Camera(self.bg2)
+            self.cam2 = camera.Camera(self.bg2, first_in_order=False)
             self.bgs = (self.bg1, self.bg2)
         else:
             self.bg1 = Surface((wwidth, wheight))

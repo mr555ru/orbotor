@@ -19,7 +19,7 @@ from static_functions import *
 
 class Camera():
 
-    def __init__(self, surface):
+    def __init__(self, surface, first_in_order=True):
         self.x = 0
         self.y = 0
         self.ang = 0
@@ -29,6 +29,7 @@ class Camera():
         self.maxwh = max(self.w, self.h)
         self.zoom = 1
         self.zooming = {"in": False, "out": False}
+        self.first_in_order = first_in_order
             
 
     def translate_coords(self,*args):
@@ -51,7 +52,7 @@ class Camera():
                 #a.append((obj, newx, newy, math.degrees(newang), self.zoom))
                 if obj.repr == "Planet" and not isoncamera:
                     obj.dont_draw = True
-            else:
+            elif first_in_order:
                 obj.hearable = False
         #print len(a)
         #return a

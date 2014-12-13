@@ -24,7 +24,7 @@ from pygame import *
 
 from orbotor.static_functions import *
 
-from orbotor.orbitable import Orbitable
+from orbotor.orbitable import Orbitable, GCD_Singleton
 from orbotor.bullet import Bullet
 from orbotor.debris import Debris, Spark
 from orbotor.supply import FuelSupply, AmmoSupply
@@ -40,6 +40,7 @@ class Sputnik(Orbitable):
 
     def __init__(self, c, x, y, planet, is_ai=False):
         Orbitable.__init__(self, x, y, r=8, m=15, dx=0, dy=0, ang=random.random()*2*math.pi, dang=0, nocollidesteps=20, colliding=True)
+        GCD_Singleton.make_priority(self)
         self.color = Color(c)
         self.spawn = (x, y)
         self.repr = "Sputnik"
@@ -154,6 +155,8 @@ class Sputnik(Orbitable):
         
         self.focused = False
         
+        self.respawntime = MAXRESPAWNTIME
+        
     def focus(self, camera):
         Orbitable.focus(self, camera)
         self.focused = True
@@ -201,13 +204,7 @@ class Sputnik(Orbitable):
         
 
     def draw(self, screen, t_x, t_y, t_ang, t_zoom):
-        if not self.spawned:
-            if pygame.time.get_ticks() - self.deathtime > MAXRESPAWNTIME:
-                self.respawn()
-            else:
-                #print pygame.time.get_ticks() - self.deathtime
-                pass
-        else:
+        if self.spawned:
             #self.nose.draw(screen, t_x, t_y, t_ang, t_zoom)
             #for thruster in self.visualthrusters:
             #    thruster.draw(screen, t_x, t_y, t_ang, t_zoom)
@@ -332,7 +329,7 @@ class Sputnik(Orbitable):
                 if self.nearest_opponent[0] is not None:
                     if self.nearest_opponent[0].spawned:
                         self.killall_thrusters()
-                        dang = min_max_value(-self.max_dang*0.9, self.max_dang*0.9, (self.nearest_opponent[2]-self.ang)/5.0)
+                        dang = min_max_value(-self.max_dang*self.hull_mass*1.2/self.m, self.max_dang*self.hull_mass*1.2/self.m, (self.nearest_opponent[2]-self.ang)/5.0)
                         if self.fuel > self.angularforce:
                             if dang > 0.01:
                                 self.thrusters_on["ai_ccw"] = True
@@ -464,6 +461,9 @@ class Sputnik(Orbitable):
             child.affected(mass, x, y)
 
     def step(self):
+        if not self.spawned:
+            if pygame.time.get_ticks() - self.deathtime > self.respawntime:
+                    self.respawn()
         self.m = self.hull_mass + self.fuel * FUEL_MASS + self.ammo * BULLET_MASS
         self.execute_thrusters()
         self.get_peri_apo()
@@ -552,6 +552,7 @@ class Sputnik(Orbitable):
             self.fuel = 0
             self.deaths += 1
             self.deathtime = pygame.time.get_ticks()
+            self.respawntime = random.randint(0, int(MAXRESPAWNTIME*1.1))
             self.colliding = False
             self.nocollide = 0
             self.team_notice_dead = True
@@ -573,7 +574,7 @@ class Sputnik(Orbitable):
         self.x = self.spawn[0]+random.randint(0,100)-200
         self.y = self.spawn[1]+random.randint(0,100)-200
         if self.hearable:
-                self.soundsys.playsound('respawn')
+            self.soundsys.playsound('respawn')
         self.dang = 0
         self.initialspeed(self.planet.m, self.planet.x, self.planet.y)
         

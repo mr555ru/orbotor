@@ -21,12 +21,17 @@ class GlobalCollisionDetector():
     def __init__(self):
         self.orbitables = []
         self.planet = None
+        self.loosening = False
+        self.loosening_value = 0
         
     def be_added(self, orbitable):
         self.orbitables.append(orbitable)
         
     def step(self):
-        for obj1 in self.orbitables:
+        self.loosening = len(self.orbitables) > 100
+        if self.loosening:
+            self.loosening_value = 1-self.loosening_value
+        for obj1 in self.orbitables[self.loosening_value if self.loosening else 0::2 if self.loosening else 1]:
             if obj1.GCD_REMOVE_ME_FLAG:
                 self.orbitables.remove(obj1)
             else:
@@ -38,7 +43,7 @@ class GlobalCollisionDetector():
                         obj1.way_too_far()
                     elif pl_r > self.planet.r2**2:
                         obj1.get_too_far()
-                for obj2 in self.orbitables:
+                for obj2 in self.orbitables[self.loosening_value if self.loosening else 0::2 if self.loosening else 1]:
                     if not (obj1 is obj2) and obj1.colliding and obj2.colliding:
                         r = (obj1.x-obj2.x)**2+(obj1.y-obj2.y)**2
                         minr = (obj1.r + obj2.r)**2

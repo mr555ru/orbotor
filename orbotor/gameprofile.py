@@ -29,7 +29,7 @@ from static_functions import *
 import camera as camera
 import planet as planet
 
-from orbitable import GCD_Singleton
+from orbitable import GCD_Singleton, SoundSystem_Singleton
 from helldebris_collection import HellDebrisCollection
 from team import Team
 from simplestats import SimpleStats
@@ -101,6 +101,8 @@ class Profile():
         self.pl = planet.Planet(self.bgs, self.ERAD, self.MAXRAD, "planet.png" if self.draw_planet else None)
         GCD_Singleton.planet = self.pl
         
+        self.soundsys = SoundSystem_Singleton
+        
         self.spawn = (self.ERAD+self.ORBHEIGHT, 0)
         self.team1 = Team("Green", "#009900", self.green, self.spawn, self.pl)
         self.team2 = Team("Red", "#880000", self.red, self.spawn, self.pl)
@@ -151,6 +153,8 @@ class Profile():
         if event.type == KEYDOWN and event.key == K_F1:
             self.PROFILESTEP = True
             self.game_step()
+        elif event.type == KEYDOWN and event.key == K_F5:
+            self.soundsys.switch()
         if not self.p1_ai:
             self.player1.catch_kb_event(event)
         if self.p2 and not self.p2_ai:
@@ -192,13 +196,9 @@ class Profile():
         
         tup =  [self.pl,] + self.team1.objectslist() + self.team2.objectslist() + self.hell.objectslist() + self.pl.cities
         tup = tuple(tup)
-        newco = self.cam1.translate_coords(*tup)
-        for obj in newco:
-            obj[0].draw(self.bg1, int(obj[1]), int(obj[2]), obj[3], obj[4])
+        self.cam1.translate_coords(*tup)
         if self.p2:
-            newco = self.cam2.translate_coords(*tup)
-            for obj in newco:
-                obj[0].draw(self.bg2, int(obj[1]), int(obj[2]), obj[3], obj[4])
+            self.cam2.translate_coords(*tup)
 
         self.stats1.draw(self.bg1)
         self.screen.blit(self.bg1, (0, 0))

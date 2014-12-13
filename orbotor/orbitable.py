@@ -21,9 +21,11 @@ from pygame import *
 
 from static_functions import *
 from gcd import GlobalCollisionDetector
+from soundsystem import SoundSystem
 import camera
                      
 GCD_Singleton = GlobalCollisionDetector()
+SoundSystem_Singleton = SoundSystem()
 
 class Orbitable(camera.Camerable):
     def __init__(self, x, y, r, m, ang=0, dang=0, dx=0, dy=0, nocollidesteps=0, colliding=True):
@@ -52,6 +54,8 @@ class Orbitable(camera.Camerable):
         self.drawdx = 0
         self.drawdy = 0
         self.is_circle = False
+        
+        self.soundsys = SoundSystem_Singleton
         
     def set_drawdelta(self):
         self.drawdx = self.sprite.get_width()/2

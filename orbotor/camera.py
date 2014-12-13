@@ -32,7 +32,7 @@ class Camera():
             
 
     def translate_coords(self,*args):
-        a = []
+        #a = []
         for obj in args:
             x = (obj.x - self.x)*self.zoom
             y = (obj.y - self.y)*self.zoom
@@ -46,11 +46,15 @@ class Camera():
                 newy = r*math.sin(ange)+self.h/2
                 
                 newang = self.ang - obj.ang
-                a.append((obj, newx, newy, math.degrees(newang), self.zoom))
+                obj.draw(self.surface, int(newx), int(newy), math.degrees(newang), self.zoom)
+                obj.hearable = True
+                #a.append((obj, newx, newy, math.degrees(newang), self.zoom))
                 if obj.repr == "Planet" and not isoncamera:
                     obj.dont_draw = True
+            else:
+                obj.hearable = False
         #print len(a)
-        return a
+        #return a
     
     def step(self):
         if self.zooming["in"]:
@@ -100,3 +104,7 @@ class Camerable(object):
         self.sprite_off_y = 0
         self.r = 0
         self.repr = "dunno"
+        self.hearable = False
+        
+    def draw(self, screen, t_x, t_y, t_ang, t_zoom):
+        pass

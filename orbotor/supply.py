@@ -27,11 +27,14 @@ class FuelSupply(Debris):
          self.m = 16*FUEL_MASS
          self.is_circle = True
          
+         self.soundsys.initsound('fuel',"fuelsupply.wav")
+         
     def get_collision(self, other, vel, ang):
         if other.repr == "Sputnik":
             if other.spawned:
                 if vel < 2:
                     other.refuel()
+                    self.soundsys.playsound('fuel')
                     #print "Bless you with fuel!"
                 else:
                     other.destroy(reason=self.repr)
@@ -47,11 +50,14 @@ class AmmoSupply(Debris):
          self.m = 16*BULLET_MASS
          self.is_circle = True
          
+         self.soundsys.initsound('ammo',"ammosupply.wav")
+         
     def get_collision(self, other, vel, ang):
         if other.repr == "Sputnik":
             if other.spawned:
                 if vel < 2:
                     other.reload()
+                    self.soundsys.playsound('ammo')
                     #print "Bless you with ammo!"
                 else:
                     other.destroy(reason=self.repr)

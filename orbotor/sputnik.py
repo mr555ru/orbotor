@@ -146,6 +146,11 @@ class Sputnik(Orbitable):
         #self.ecc = 0
         self.anomaly = 0
         
+        self.soundsys.initsound('kill',"kill.wav")
+        self.soundsys.initsound('fire',"shoot.wav")
+        self.soundsys.initsound('turbo',"turbo.wav")
+        self.soundsys.initsound('respawn',"respawn.wav")
+        
     def set_name(self, new_name):
         print "%s is now %s" % (self.name, new_name)
         self.name = new_name
@@ -210,6 +215,8 @@ class Sputnik(Orbitable):
                 
                 self.dx -= BULLET_MASS/float(self.m) * BULLET_VEL * math.cos(self.ang)
                 self.dy -= BULLET_MASS/float(self.m) * BULLET_VEL * math.sin(self.ang)
+                if self.hearable:
+                    self.soundsys.playsound('fire')
         
     def execute_thrusters(self):
         if self.thrusters_on["ang_cw"]:
@@ -340,6 +347,8 @@ class Sputnik(Orbitable):
         self.thrusters_on[key] = True
         if key in ("turbo", "killrot", "turbo_left", "turbo_right", "turbo_back","fw"):
             self.ai_random_thruster_time = pygame.time.get_ticks() + random.randint(100, 300)
+            if random.randint(0,10) == 0 and self.hearable:
+                self.soundsys.playsound('turbo')
         else:
             self.ai_random_thruster_time = pygame.time.get_ticks() + random.randint(300, 1250)
 
@@ -354,14 +363,24 @@ class Sputnik(Orbitable):
         
         if e.key == K_w:
             self.thrusters_on["fw"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_LSHIFT:
             self.thrusters_on["turbo"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_z:
             self.thrusters_on["turbo_left"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_x:
             self.thrusters_on["turbo_back"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_c:
             self.thrusters_on["turbo_right"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_s:
             self.thrusters_on["back"] = applyval
         elif e.key == K_q:
@@ -392,14 +411,24 @@ class Sputnik(Orbitable):
         
         if e.key == K_i or e.key == K_UP:
             self.thrusters_on["fw"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_RSHIFT:
             self.thrusters_on["turbo"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_n:
             self.thrusters_on["turbo_left"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_m or e.key == K_COMMA:
             self.thrusters_on["turbo_back"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_PERIOD:
             self.thrusters_on["turbo_right"] = applyval
+            if applyval and self.hearable:
+                self.soundsys.playsound('turbo')
         elif e.key == K_k or e.key == K_DOWN:
             self.thrusters_on["back"] = applyval
         elif e.key == K_u:
@@ -507,6 +536,8 @@ class Sputnik(Orbitable):
         #if self.nodebris > 0:
         #    self.nodebris -= 1
         if self.spawned:
+            if self.hearable:
+                self.soundsys.playsound('kill')
             if self.name != " ":
                 print "%s has been destroyed, reason: %s" % (self.name, reason)
             self.fuel = 0
@@ -532,6 +563,8 @@ class Sputnik(Orbitable):
         self.nocollide = self.maxnocollide
         self.x = self.spawn[0]+random.randint(0,100)-200
         self.y = self.spawn[1]+random.randint(0,100)-200
+        if self.hearable:
+                self.soundsys.playsound('respawn')
         self.dang = 0
         self.initialspeed(self.planet.m, self.planet.x, self.planet.y)
         

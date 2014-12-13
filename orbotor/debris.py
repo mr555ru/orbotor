@@ -37,6 +37,8 @@ class Debris(Orbitable):
         self.dx = dx + (random.randint(0,40)-20)/30.0
         self.dy = dy + (random.randint(0,40)-20)/30.0
         self.dang = random.random()*0.8-0.4
+        
+        self.soundsys.initsound('debris',"debris_crack.wav")
         #print self.dang
 
         #print "debris initiated %f %f" % (self.dx, self.dy)
@@ -58,6 +60,8 @@ class Debris(Orbitable):
                     self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
                 self.m = m
                 Orbitable.get_collision(self, other, vel, ang)
+                if self.hearable:
+                    self.soundsys.playsound('debris')
             self.destroy()
 
     def get_too_close(self):

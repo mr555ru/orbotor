@@ -26,20 +26,39 @@ class SoundSystem():
         self.sound_on = True
         self.sounds_folder = "sounds"
         self.sounds = {}
-        self.bg = pygame.mixer.Sound(os.path.join(self.sounds_folder, "lazarus-rising.ogg"))
-        self.bg.play(-1)
+        self.looped = []
+        
+        self.initsound("bg","lazarus-rising.ogg")
+        self.loopsound("bg")
+        
         
     def initsound(self, id, filename):
         if id not in self.sounds.keys():
-            self.sounds[id] = pygame.mixer.Sound(os.path.join(self.sounds_folder, filename))
+            if os.path.isfile(os.path.join(self.sounds_folder, filename)):
+                self.sounds[id] = pygame.mixer.Sound(os.path.join(self.sounds_folder, filename))
+                self.sounds[id].set_volume(0.7)
+            else:
+                print "WARNING: no file %s found" % os.path.join(self.sounds_folder, filename)
         
     def playsound(self, id):
-        if self.sound_on:
+        if self.sound_on and id in self.sounds.keys():
             self.sounds[id].play()
+            
+    def loopsound(self, id):
+        if self.sound_on and id not in self.looped and id in self.sounds.keys():
+            self.sounds[id].play(-1)
+            self.looped.append(id)
+            
+    def removelooped(self, id):
+        if id in self.looped and id in self.sounds.keys():
+            self.sounds[id].stop()
+            self.looped.remove(id)
             
     def switch(self):
         self.sound_on = not self.sound_on
         if self.sound_on:
-            self.bg.play(-1)
+            for id in self.looped:
+                self.sounds[id].play(-1)
         else:
-            self.bg.stop()
+            for id in self.looped:
+                self.sounds[id].stop()

@@ -20,6 +20,8 @@ import math
 import pygame
 from pygame import *
 
+from orbitable import SoundSystem_Singleton
+
 from game_constants import STATS_FONT
 
 class SimpleStats():
@@ -31,6 +33,10 @@ class SimpleStats():
         self.font = pygame.font.Font(STATS_FONT, 18)
         
         self.bg = Surface((350,160), flags=SRCALPHA)
+        
+        self.soundsys = SoundSystem_Singleton
+        
+        self.soundsys.initsound('warn','warning.wav')
 
 
     def draw(self, screen):
@@ -40,21 +46,26 @@ class SimpleStats():
         string4 = "Fuel: %.4f, ammo %d, mass %.2f" % (self.player.fuel, self.player.ammo, self.player.m)
         if self.player.spawned:
             string5 = "Alive for %.2fs, record %.2fs" % ((pygame.time.get_ticks() - self.player.spawntime)/1000.0, self.player.max_alive/1000.0)
+            string6 = "peri %d, apo %d, now %d, ano %d" % (self.player.peri, self.player.apo, self.player.height, math.degrees(self.player.anomaly))
+            string6 += "º"[1]
             if self.player.apo >= self.player.planet.r2:
                 string7 = "     WARNING: ORBIT TOO HIGH!"
                 sprite7 = self.font.render(string7, True, Color("#DD0000"))
+                self.soundsys.loopsound('warn')
             elif self.player.peri <= self.player.planet.r:
                 string7 = "     WARNING: ORBIT TOO LOW!"
                 sprite7 = self.font.render(string7, True, Color("#DD0000"))
+                self.soundsys.loopsound('warn')
             else:
                 string7 = "             ORBIT OK"
                 sprite7 = self.font.render(string7, True, Color("#007700"))
+                self.soundsys.removelooped('warn')
         else:
+            self.soundsys.removelooped('warn')
             string5 = "Orbited %.2fs, record %.2fs" % ((self.player.deathtime - self.player.spawntime)/1000.0, self.player.max_alive/1000.0)
+            string6 = " "
             string7 = " "
             sprite7 = self.font.render(string7, True, Color("#DD0000"))
-        string6 = "peri %d, apo %d, now %d, ano %d" % (self.player.peri, self.player.apo, self.player.height, math.degrees(self.player.anomaly))
-        string6 += "º"[1]
         
         sprite1 = self.font.render(string1, True, Color(self.team1.color))
         sprite2 = self.font.render(string2, True, Color(self.team2.color))

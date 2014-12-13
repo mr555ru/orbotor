@@ -150,6 +150,13 @@ class Sputnik(Orbitable):
         self.soundsys.initsound('fire',"shoot.wav")
         self.soundsys.initsound('turbo',"turbo.wav")
         self.soundsys.initsound('respawn',"respawn.wav")
+        self.soundsys.initsound('noammo',"noammo.wav")
+        
+        self.focused = False
+        
+    def focus(self, camera):
+        Orbitable.focus(self, camera)
+        self.focused = True
         
     def set_name(self, new_name):
         print "%s is now %s" % (self.name, new_name)
@@ -217,6 +224,8 @@ class Sputnik(Orbitable):
                 self.dy -= BULLET_MASS/float(self.m) * BULLET_VEL * math.sin(self.ang)
                 if self.hearable:
                     self.soundsys.playsound('fire')
+            elif self.focused:
+                self.soundsys.playsound('noammo')
         
     def execute_thrusters(self):
         if self.thrusters_on["ang_cw"]:

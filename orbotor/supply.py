@@ -34,7 +34,8 @@ class FuelSupply(Debris):
             if other.spawned:
                 if vel < 2:
                     other.refuel()
-                    self.soundsys.playsound('fuel')
+                    if self.hearable:
+                        self.soundsys.playsound('fuel')
                     #print "Bless you with fuel!"
                 else:
                     other.destroy(reason=self.repr)
@@ -57,7 +58,8 @@ class AmmoSupply(Debris):
             if other.spawned:
                 if vel < 2:
                     other.reload()
-                    self.soundsys.playsound('ammo')
+                    if self.hearable:
+                        self.soundsys.playsound('ammo')
                     #print "Bless you with ammo!"
                 else:
                     other.destroy(reason=self.repr)

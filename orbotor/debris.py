@@ -29,7 +29,7 @@ class Debris(Orbitable):
         self.scaling = DEBRIS_SCALING
         self.m = random.random()*5+2
         self.children = []
-
+        
         self.sprite = random.choice(debris_collection)
         
         self.set_drawdelta()
@@ -42,6 +42,10 @@ class Debris(Orbitable):
         #print self.dang
 
         #print "debris initiated %f %f" % (self.dx, self.dy)
+        
+    #def step(self):
+    #    Orbitable.step(self)
+    #    self.colliding = self.nocollide == 0 and self.hearable
         
     def draw(self, screen, t_x, t_y, t_ang, t_zoom):
         t_zoom = t_zoom/self.scaling

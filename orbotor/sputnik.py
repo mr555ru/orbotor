@@ -558,9 +558,8 @@ class Sputnik(Orbitable):
             self.colliding = False
             self.nocollide = 0
             self.team_notice_dead = True
-            if not GCD_Singleton.loosening:
-                for i in xrange(random.randint(2,4)):
-                    self.children.append(Debris(self.x, self.y, self.dx, self.dy))
+            for i in xrange(random.randint(2,4)):
+                self.children.append(Debris(self.x, self.y, self.dx, self.dy))
             if random.randint(0, 2) == 0:
                 self.children.append(FuelSupply(self.x, self.y, self.dx, self.dy))
             if random.randint(0, 2) == 0:
@@ -582,8 +581,9 @@ class Sputnik(Orbitable):
     def get_collision(self, other, vel, ang):
         if other.repr == "Sputnik" or other.repr == "Debris":
             Orbitable.get_collision(self, other, vel, ang)
-            for i in xrange(random.randint(6,20)):
-                self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
+            if not GCD_Singleton.loosening:
+                for i in xrange(random.randint(6,20)):
+                    self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
             if other.repr == "Sputnik":
                 self.destroy(reason="collision with %s" % other.name)
             else:

@@ -153,6 +153,8 @@ class Profile():
         if event.type == KEYDOWN and event.key == K_F1:
             self.PROFILESTEP = True
             self.game_step()
+        elif event.type == KEYDOWN and event.key == K_F2:
+            print len(GCD_Singleton.orbitables)
         elif event.type == KEYDOWN and event.key == K_F5:
             self.soundsys.switch()
         if not self.p1_ai:

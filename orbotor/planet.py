@@ -91,8 +91,7 @@ class Planet(Camerable):
             else:
                 self.derivative, offsets = better_rotozoom(self.sprite, t_ang, t_zoom*float(self.r*2)/self.sprite.get_width(), (self.sprite_off_x, self.sprite_off_y))
                 camera_bg.blit(self.derivative, (t_x-t_zoom*self.r, t_y-t_zoom*self.r))
-        else:
-            self.dont_draw = False
+        self.dont_draw = False
 
 class City(Camerable):
 

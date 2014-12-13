@@ -38,7 +38,7 @@ class Camera():
             x = (obj.x - self.x)*self.zoom
             y = (obj.y - self.y)*self.zoom
             
-            isoncamera = x+self.maxwh/2 > -obj.r*self.zoom and y+self.maxwh/2 > -obj.r*self.zoom and x+self.maxwh/2 < self.maxwh+obj.r*self.zoom and y+self.maxwh/2 < self.maxwh+obj.r*self.zoom
+            isoncamera = x+self.w/2 > -obj.r*self.zoom and y+self.h/2 > -obj.r*self.zoom and x+self.w/2 < self.maxwh+obj.r*self.zoom and y+self.h/2 < self.maxwh+obj.r*self.zoom
             
             if isoncamera or obj.repr == "Planet":    
                 r = math.sqrt(x**2+y**2)
@@ -47,11 +47,11 @@ class Camera():
                 newy = r*math.sin(ange)+self.h/2
                 
                 newang = self.ang - obj.ang
-                obj.draw(self.surface, int(newx), int(newy), math.degrees(newang), self.zoom)
                 obj.hearable = True
                 #a.append((obj, newx, newy, math.degrees(newang), self.zoom))
                 if obj.repr == "Planet" and not isoncamera:
                     obj.dont_draw = True
+                obj.draw(self.surface, int(newx), int(newy), math.degrees(newang), self.zoom)
             elif self.first_in_order:
                 obj.hearable = False
         #print len(a)

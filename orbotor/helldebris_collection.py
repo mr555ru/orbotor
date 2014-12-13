@@ -18,6 +18,8 @@ import random
 
 from helldebris import HellDebris
 
+from orbitable import GCD_Singleton
+
 class HellDebrisCollection():
     def __init__(self, players_spawn, planet, min=6, max=20):
         self.debris = []
@@ -29,7 +31,7 @@ class HellDebrisCollection():
 
     def generate(self):
         cnt = random.randint(0,self.max-self.min)
-        print "%d pieces of hell generated" % cnt
+        #print "%d pieces of hell generated" % cnt
         for i in xrange(cnt):
             d = HellDebris(self.spawn[0] + random.randint(0,300)-150, self.spawn[1] + random.randint(0,100)-50, 0, 0)
             d.initialspeed(self.planet.m, self.planet.x, self.planet.y)
@@ -47,6 +49,6 @@ class HellDebrisCollection():
                 self.debris.append(chichild)
             d.affected(self.planet.m, self.planet.x, self.planet.y)
             d.step()
-        if len(self.debris) <= self.min:
+        if len(self.debris) <= self.min and not GCD_Singleton.loosening:
             if random.randint(0, 220) == 0:
                 self.generate()

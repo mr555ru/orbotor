@@ -16,7 +16,7 @@
 
 from debris import Debris, Spark
 from static_functions import *
-from orbitable import Orbitable
+from orbitable import Orbitable, GCD_Singleton
 
 helldebris_sprites = [imitate_debris(HELLDEBRIS_COLORS[0], HELLDEBRIS_COLORS[1], int(DEBRIS_R*DEBRIS_SCALING)) for i in xrange(30)]
 
@@ -36,7 +36,7 @@ class HellDebris(Debris):
         self.dy = - v * math.sin(vang) + (random.randint(0,40)-20)/80.0
 
     def get_collision(self, other, vel, ang):
-        if other.repr != "Spark":
+        if other.repr != "Spark" not GCD_Singleton.loosening:
             if random.randint(0,2) == 0:
                 m = 0
                 for i in xrange(random.randint(2, 4)):

@@ -16,7 +16,7 @@
 
 import math
 
-from orbitable import Orbitable 
+from orbitable import Orbitable, GCD_Singleton
 from static_functions import *
 
 debris_collection = [imitate_debris(DEBRIS_COLORS[0], DEBRIS_COLORS[1], int(DEBRIS_R*DEBRIS_SCALING)) for i in xrange(30)]
@@ -50,7 +50,7 @@ class Debris(Orbitable):
             
 
     def get_collision(self, other, vel, ang):
-        if other.repr != "Spark":
+        if other.repr != "Spark" and not GCD_Singleton.loosening:
             if random.randint(0,4) == 0:
                 m = 0
                 for i in xrange(random.randint(2, 7)):

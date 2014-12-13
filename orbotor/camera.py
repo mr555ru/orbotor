@@ -52,7 +52,7 @@ class Camera():
                 #a.append((obj, newx, newy, math.degrees(newang), self.zoom))
                 if obj.repr == "Planet" and not isoncamera:
                     obj.dont_draw = True
-            elif first_in_order:
+            elif self.first_in_order:
                 obj.hearable = False
         #print len(a)
         #return a

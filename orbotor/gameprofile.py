@@ -99,7 +99,7 @@ class Profile():
             pygame.display.set_caption("Orbotor - %s" % self.name)
             
         self.pl = planet.Planet(self.bgs, self.ERAD, self.MAXRAD, "planet.png" if self.draw_planet else None)
-        GCD_Singleton.planet = self.pl
+        GCD_Singleton.set_planet(self.pl)
         
         self.soundsys = SoundSystem_Singleton
         

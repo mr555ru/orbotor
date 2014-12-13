@@ -16,13 +16,21 @@
 
 import math
 
+from quadtree import *
+
 class GlobalCollisionDetector():
     
     def __init__(self):
         self.orbitables = []
         self.planet = None
         self.loosening = False
-        self.loosening_limit = 120
+        self.loosening_limit = 500
+        
+    def set_planet(self, planet):
+        self.planet=planet
+        bounds = QuadTreeBounds()
+        bounds.get_from_planet(planet)
+        self.quadtree = QuadTree(1, bounds)
         
     def make_priority(self, obj):
         pass
@@ -33,6 +41,7 @@ class GlobalCollisionDetector():
     def step(self):
         self.loosening = len(self.orbitables) > self.loosening_limit
         #checking = self.orbitables #+ self.priority
+        self.quadtree.reinsertlist(self.orbitables)
         for obj1 in self.orbitables:
             if obj1.GCD_REMOVE_ME_FLAG:
                 self.orbitables.remove(obj1)
@@ -45,7 +54,7 @@ class GlobalCollisionDetector():
                         obj1.way_too_far()
                     elif pl_r > self.planet.r2**2:
                         obj1.get_too_far()
-                for obj2 in self.orbitables:
+                for obj2 in self.quadtree.retrieve(obj1):
                     if not (obj1 is obj2) and obj1.colliding and obj2.colliding:
                         r = (obj1.x-obj2.x)**2+(obj1.y-obj2.y)**2
                         minr = (obj1.r + obj2.r)**2

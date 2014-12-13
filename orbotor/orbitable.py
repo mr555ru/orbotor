@@ -22,14 +22,15 @@ from pygame import *
 from static_functions import *
 from gcd import GlobalCollisionDetector
 from soundsystem import SoundSystem
-import camera
+import camera, quadtree
                      
 GCD_Singleton = GlobalCollisionDetector()
 SoundSystem_Singleton = SoundSystem()
 
-class Orbitable(camera.Camerable):
+class Orbitable(camera.Camerable, quadtree.QuadTreeObject):
     def __init__(self, x, y, r, m, ang=0, dang=0, dx=0, dy=0, nocollidesteps=0, colliding=True):
         global GCD_Singleton
+        quadtree.QuadTreeObject.__init__(self)
         camera.Camerable.__init__(self)
         self.x = float(x)
         self.y = float(y)

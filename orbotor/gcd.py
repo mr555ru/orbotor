@@ -24,7 +24,7 @@ class GlobalCollisionDetector():
         self.loosening = False
         self.loosening_value = 0
         self.priority = []
-        self.loosening_strength = 2
+        self.loosening_limit = 200
         
     def make_priority(self, obj):
         self.orbitables.remove(obj)
@@ -34,10 +34,8 @@ class GlobalCollisionDetector():
         self.orbitables.append(orbitable)
         
     def step(self):
-        self.loosening = len(self.orbitables) > 250
-        if self.loosening:
-            self.loosening_value = (self.loosening_value + 1) % self.loosening_strength
-        checking = self.orbitables[self.loosening_value if self.loosening else 0::self.loosening_strength if self.loosening else 1]+ self.priority
+        self.loosening = len(self.orbitables) > self.loosening_limit
+        checking = self.orbitables + self.priority
         for obj1 in checking:
             if obj1.GCD_REMOVE_ME_FLAG:
                 if obj1 not in self.priority:

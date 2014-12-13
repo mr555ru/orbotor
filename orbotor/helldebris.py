@@ -36,13 +36,14 @@ class HellDebris(Debris):
         self.dy = - v * math.sin(vang) + (random.randint(0,40)-20)/80.0
 
     def get_collision(self, other, vel, ang):
-        if random.randint(0,2) == 0 and other.repr != "Spark":
-            m = 0
-            for i in xrange(random.randint(2, 4)):
-                m += 5
-                self.children.append(HellDebris(self.x, self.y, self.dx, self.dy))
-            for i in xrange(random.randint(0,3)):
-                self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
-            self.m = m
-            Orbitable.get_collision(self, other, vel, ang)
-        self.destroy()
+        if other.repr != "Spark":
+            if random.randint(0,2) == 0:
+                m = 0
+                for i in xrange(random.randint(2, 4)):
+                    m += 5
+                    self.children.append(HellDebris(self.x, self.y, self.dx, self.dy))
+                for i in xrange(random.randint(0,3)):
+                    self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
+                self.m = m
+                Orbitable.get_collision(self, other, vel, ang)
+            self.destroy()

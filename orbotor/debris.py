@@ -48,16 +48,17 @@ class Debris(Orbitable):
             
 
     def get_collision(self, other, vel, ang):
-        if random.randint(0,4) == 0 and other.repr != "Spark":
-            m = 0
-            for i in xrange(random.randint(2, 7)):
-                m += 5
-                self.children.append(Debris(self.x, self.y, self.dx, self.dy))
-            for i in xrange(random.randint(0,3)):
-                self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
-            self.m = m
-            Orbitable.get_collision(self, other, vel, ang)
-        self.destroy()
+        if other.repr != "Spark":
+            if random.randint(0,4) == 0:
+                m = 0
+                for i in xrange(random.randint(2, 7)):
+                    m += 5
+                    self.children.append(Debris(self.x, self.y, self.dx, self.dy))
+                for i in xrange(random.randint(0,3)):
+                    self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
+                self.m = m
+                Orbitable.get_collision(self, other, vel, ang)
+            self.destroy()
 
     def get_too_close(self):
         self.destroy()

@@ -554,7 +554,7 @@ class Sputnik(Orbitable):
             self.fuel = 0
             self.deaths += 1
             self.deathtime = pygame.time.get_ticks()
-            self.respawntime = random.randint(0, int(MAXRESPAWNTIME*1.1))
+            self.respawntime = MAXRESPAWNTIME + random.randint(0, int(MAXRESPAWNTIME*1.1))
             self.colliding = False
             self.nocollide = 0
             self.team_notice_dead = True

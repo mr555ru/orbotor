@@ -36,7 +36,7 @@ class HellDebris(Debris):
         self.dy = - v * math.sin(vang) + (random.randint(0,40)-20)/80.0
 
     def get_collision(self, other, vel, ang):
-        if random.randint(0,2) == 0:
+        if random.randint(0,2) == 0 and other.repr != "Spark":
             m = 0
             for i in xrange(random.randint(2, 4)):
                 m += 5

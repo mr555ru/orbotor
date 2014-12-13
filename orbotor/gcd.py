@@ -34,7 +34,7 @@ class GlobalCollisionDetector():
         self.orbitables.append(orbitable)
         
     def step(self):
-        self.loosening = len(self.orbitables) > 100
+        self.loosening = len(self.orbitables) > 250
         if self.loosening:
             self.loosening_value = (self.loosening_value + 1) % self.loosening_strength
         checking = self.orbitables[self.loosening_value if self.loosening else 0::self.loosening_strength if self.loosening else 1]+ self.priority

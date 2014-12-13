@@ -22,8 +22,6 @@ class GlobalCollisionDetector():
         self.orbitables = []
         self.planet = None
         self.loosening = False
-        self.loosening_value = 0
-        #self.priority = []
         self.loosening_limit = 120
         
     def make_priority(self, obj):

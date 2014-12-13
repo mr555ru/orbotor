@@ -558,7 +558,10 @@ class Sputnik(Orbitable):
             self.colliding = False
             self.nocollide = 0
             self.team_notice_dead = True
-            for i in xrange(random.randint(2,4)):
+            if not GCD_Singleton.loosening:
+                for i in xrange(random.randint(2,4)):
+                    self.children.append(Debris(self.x, self.y, self.dx, self.dy))
+            else:
                 self.children.append(Debris(self.x, self.y, self.dx, self.dy))
             if random.randint(0, 2) == 0:
                 self.children.append(FuelSupply(self.x, self.y, self.dx, self.dy))

@@ -1,0 +1,25 @@
+import pygame
+from pygame import *
+
+wwidth = 800
+wheight = 600
+
+display = (wwidth, wheight)
+
+bgcolor = "#000A0F"
+
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode(display)
+    bg = Surface(display)
+    bg.fill(Color(bgcolor))
+
+    while 1:
+        for e in pygame.event.get():
+            if e.type == QUIT:
+                raise SystemExit, "Q"
+        screen.blit(bg, (0, 0))
+        pygame.display.update()
+
+if __name__ == "__main__":
+    main()

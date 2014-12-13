@@ -484,16 +484,16 @@ class Sputnik(Orbitable):
             thruster.upd()
 
         for child in self.children:
+            child.step()
+            while len(child.children) > 0:
+                chichild = child.children.pop()
+                self.children.append(chichild)
             if child.GCD_REMOVE_ME_FLAG:
                 if child.repr == "Bullet":
                     if child.iamakiller:
                         self.frags += 1
                         child.iamakiller = False
                 self.children.remove(child)
-            child.step()
-            while len(child.children) > 0:
-                chichild = child.children.pop()
-                self.children.append(chichild)
         
         if self.is_ai and self.spawned:
             self.ai_step()

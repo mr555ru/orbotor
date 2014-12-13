@@ -468,6 +468,8 @@ class Sputnik(Orbitable):
         self.execute_thrusters()
         self.get_peri_apo()
         Orbitable.step(self)
+        if self.nocollide == 1 and self.hearable:
+            self.soundsys.playsound('respawn')
         
         if abs(self.dang) > self.max_dang:
             self.destroy(reason="too much rotation")
@@ -573,8 +575,6 @@ class Sputnik(Orbitable):
         self.nocollide = self.maxnocollide
         self.x = self.spawn[0]+random.randint(0,100)-200
         self.y = self.spawn[1]+random.randint(0,100)-200
-        if self.hearable:
-            self.soundsys.playsound('respawn')
         self.dang = 0
         self.initialspeed(self.planet.m, self.planet.x, self.planet.y)
         

@@ -36,7 +36,8 @@ class SimpleStats():
         
         self.soundsys = SoundSystem_Singleton
         
-        self.soundsys.initsound('warn','warning.wav')
+        self.soundid = 'warn_%s' % player.name
+        self.soundsys.initsound(self.soundid,'warning.wav')
 
 
     def draw(self, screen):
@@ -51,17 +52,17 @@ class SimpleStats():
             if self.player.apo >= self.player.planet.r2:
                 string7 = "     WARNING: ORBIT TOO HIGH!"
                 sprite7 = self.font.render(string7, True, Color("#DD0000"))
-                self.soundsys.loopsound('warn')
+                self.soundsys.loopsound(self.soundid)
             elif self.player.peri <= self.player.planet.r:
                 string7 = "     WARNING: ORBIT TOO LOW!"
                 sprite7 = self.font.render(string7, True, Color("#DD0000"))
-                self.soundsys.loopsound('warn')
+                self.soundsys.loopsound(self.soundid)
             else:
                 string7 = "             ORBIT OK"
                 sprite7 = self.font.render(string7, True, Color("#007700"))
-                self.soundsys.removelooped('warn')
+                self.soundsys.removelooped(self.soundid)
         else:
-            self.soundsys.removelooped('warn')
+            self.soundsys.removelooped(self.soundid)
             string5 = "Orbited %.2fs, record %.2fs" % ((self.player.deathtime - self.player.spawntime)/1000.0, self.player.max_alive/1000.0)
             string6 = " "
             string7 = " "

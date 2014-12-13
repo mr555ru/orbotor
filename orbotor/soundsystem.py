@@ -45,9 +45,10 @@ class SoundSystem():
             self.sounds[id].play()
             
     def loopsound(self, id):
-        if self.sound_on and id not in self.looped and id in self.sounds.keys():
+        if self.sound_on and id not in self.looped and (id in self.sounds.keys()):
             self.sounds[id].play(-1)
             self.looped.append(id)
+            print ""
             
     def removelooped(self, id):
         if id in self.looped and id in self.sounds.keys():

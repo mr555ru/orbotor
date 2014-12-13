@@ -28,15 +28,15 @@ class SoundSystem():
         self.sounds = {}
         self.looped = []
         
-        self.initsound("bg","lazarus-rising.ogg")
+        self.initsound("bg","lazarus-rising.ogg",1.0)
         self.loopsound("bg")
         
         
-    def initsound(self, id, filename):
+    def initsound(self, id, filename, volume=0.7):
         if id not in self.sounds.keys():
             if os.path.isfile(os.path.join(self.sounds_folder, filename)):
                 self.sounds[id] = pygame.mixer.Sound(os.path.join(self.sounds_folder, filename))
-                self.sounds[id].set_volume(0.7)
+                self.sounds[id].set_volume(volume)
             else:
                 print "WARNING: no file %s found" % os.path.join(self.sounds_folder, filename)
         

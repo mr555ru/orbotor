@@ -39,6 +39,7 @@ class Debris(Orbitable):
         self.dang = random.random()*0.8-0.4
         
         self.soundsys.initsound('debris',"debris_crack.wav")
+        
         #print self.dang
 
         #print "debris initiated %f %f" % (self.dx, self.dy)

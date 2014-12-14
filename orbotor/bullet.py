@@ -22,6 +22,7 @@ from static_functions import *
 class Bullet(Orbitable):
     def __init__(self, c, x, y, dx, dy, ang, ownername):
         Orbitable.__init__(self, x, y, r=2, m=BULLET_MASS, dx=0, dy=0, ang=0, dang=0, nocollidesteps=1, colliding=False)
+        #self.set_bounds()
         GCD_Singleton.make_priority(self)
         self.repr = "Bullet"
         self.color = c

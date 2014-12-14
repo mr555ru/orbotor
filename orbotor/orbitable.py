@@ -57,6 +57,7 @@ class Orbitable(camera.Camerable, quadtree.QuadTreeObject):
         self.is_circle = False
         
         self.soundsys = SoundSystem_Singleton
+        self.bounds = None
         
     def set_drawdelta(self):
         self.drawdx = self.sprite.get_width()/2
@@ -88,6 +89,7 @@ class Orbitable(camera.Camerable, quadtree.QuadTreeObject):
         camera.ang = self.ang-math.pi/2
         
     def step(self):
+        quadtree.QuadTreeObject.step(self)
         self.x += self.dx
         self.y += self.dy
         self.ang += self.dang

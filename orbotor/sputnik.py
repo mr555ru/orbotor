@@ -40,6 +40,7 @@ class Sputnik(Orbitable):
 
     def __init__(self, c, x, y, planet, is_ai=False):
         Orbitable.__init__(self, x, y, r=8, m=15, dx=0, dy=0, ang=random.random()*2*math.pi, dang=0, nocollidesteps=20, colliding=True)
+        
         GCD_Singleton.make_priority(self)
         self.color = Color(c)
         self.spawn = (x, y)

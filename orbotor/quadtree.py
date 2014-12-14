@@ -4,6 +4,13 @@ class QuadTreeObject():
         self.x = 0
         self.y = 0
         self.r = 0
+        self.bounds = QuadTreeBounds(self)
+        
+    def step(self):
+        if self.bounds is None:
+            self.bounds = QuadTreeBounds(self)
+        else:
+            self.bounds.get_from_object(self)
     
 class QuadTreeBounds():
     
@@ -37,7 +44,7 @@ class QuadTreeBounds():
 class QuadTree():
     
     def __init__(self, level, bounds):
-        self.max_objects = 20
+        self.max_objects = 10
         self.max_levels = 6
         self.level = level
         self.objects = []
@@ -68,10 +75,13 @@ class QuadTree():
         return objb.x1 >= self.x1 and objb.y1 >= self.y1 and objb.x2 <= self.x2 and objb.y2 <= self.y2
         
     def findAppropriateNode(self, obj):
-        objb = QuadTreeBounds(obj=obj)
+        if obj.bounds is None:
+            objb = QuadTreeBounds(obj=obj)
+        else:
+            objb = obj.bounds
         
-        if not self.is_obj_in_me(objb):
-            return -1
+        #if not self.is_obj_in_me(objb):
+        #    return -1
         
         if objb.y2 < self.subheight+self.y1:
             if objb.x2 < self.subwidth+self.x1:

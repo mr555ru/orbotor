@@ -24,7 +24,7 @@ class GlobalCollisionDetector():
         self.orbitables = []
         self.planet = None
         self.loosening = False
-        self.loosening_limit = 500
+        self.loosening_limit = 166
         
     def set_planet(self, planet):
         self.planet=planet

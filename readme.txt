@@ -17,3 +17,4 @@
                               Enter - shoot
                               
                  F1 - output performance of 1 step to console
+                 F5 - sound off/on

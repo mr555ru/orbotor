@@ -14,7 +14,12 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import ConfigParser
+
 from pygame import Color
+
+config = ConfigParser.RawConfigParser()
+config.read('profile.cfg')
 
 G = 1
 MAXRESPAWNTIME = 3000
@@ -27,6 +32,8 @@ MAX_AMMO = 16
 GAME_SPEED = 40
 SYS_FONT = "font.ttf"
 STATS_FONT = "font_stats.ttf"
+
+MAX_OBJECTS = config.getint("Misc", "max_objects")
 
 DEBRIS_R = 6
 DEBRIS_SCALING = 3.0

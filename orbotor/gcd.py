@@ -18,13 +18,15 @@ import math
 
 from quadtree import *
 
+from game_constants import MAX_OBJECTS
+
 class GlobalCollisionDetector():
     
     def __init__(self):
         self.orbitables = []
         self.planet = None
         self.loosening = False
-        self.loosening_limit = 166
+        self.loosening_limit = MAX_OBJECTS
         
     def set_planet(self, planet):
         self.planet=planet

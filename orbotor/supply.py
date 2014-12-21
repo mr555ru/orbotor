@@ -21,7 +21,7 @@ class FuelSupply(Debris):
     
     def __init__(self, x, y, dx, dy):
          Debris.__init__(self, x, y, dx, dy)
-         self.r = 4
+         self.r = 9
          self.sprite = create_color_circle(Color("#B09050"), self.r*self.scaling)
          self.repr = "FuelSupply"
          self.m = 16*FUEL_MASS
@@ -45,7 +45,7 @@ class AmmoSupply(Debris):
     
     def __init__(self, x, y, dx, dy):
          Debris.__init__(self, x, y, dx, dy)
-         self.r = 4
+         self.r = 9
          self.sprite = create_color_circle(Color("#44DDDD"), self.r*self.scaling)
          self.repr = "AmmoSupply"
          self.m = 16*BULLET_MASS

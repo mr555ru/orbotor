@@ -40,7 +40,7 @@ def main(profile):
 
 
 if __name__ == "__main__":
-    #sys.argv = ["--lesshell","--coop"]
+    sys.argv = ["--lesshell","--hotseat"]
     if "--experimental" in sys.argv:
         draw_planet=True
     else:
@@ -85,6 +85,7 @@ if __name__ == "__main__":
                               8 - zoom in, 9 zoom out, 0 reset zoom
                               Enter - shoot
                               
-                 F1 - output performance of 1 step to console\n"""
+                 F1, F2 - developer outputs to the console
+                 F5 - turn sound on/off\n"""
     else:
         main(DefaultProfile(draw_planet, hell))

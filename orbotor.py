@@ -40,7 +40,7 @@ def main(profile):
 
 
 if __name__ == "__main__":
-    sys.argv = ["--lesshell","--hotseat"]
+    #sys.argv = ["--lesshell","--hotseat"]
     if "--experimental" in sys.argv:
         draw_planet=True
     else:

@@ -17,6 +17,7 @@
 import math
 from static_functions import *
 
+
 class Camera():
 
     def __init__(self, surface, first_in_order=True):
@@ -30,19 +31,21 @@ class Camera():
         self.zoom = 1
         self.zooming = {"in": False, "out": False}
         self.first_in_order = first_in_order
-            
 
-    def translate_coords(self,*args):
-        #a = []
+    def translate_coords(self, *args):
+        # a = []
         for obj in args:
             x = (obj.x - self.x)*self.zoom
             y = (obj.y - self.y)*self.zoom
             
-            #isoncamera = x+self.w/2 > -obj.r*self.zoom and y+self.h/2 > -obj.r*self.zoom and x+self.w/2 < self.maxwh+obj.r*self.zoom and y+self.h/2 < self.maxwh+obj.r*self.zoom
+            # isoncamera = x+self.w/2 > -obj.r*self.zoom\and y+self.h/2 > -obj.r*self.zoom and x+self.w/2 < self.maxwh+obj.r*self.zoom and y+self.h/2 < self.maxwh+obj.r*self.zoom # NOQA
             
-            isoncamera = x+obj.r*self.zoom > -self.maxwh/2 and y+obj.r*self.zoom > -self.maxwh/2 and x-obj.r*self.zoom < self.maxwh/2 and y-obj.r*self.zoom < self.maxwh/2
+            isoncamera = x+obj.r*self.zoom > -self.maxwh/2\
+                and y+obj.r*self.zoom > -self.maxwh/2\
+                and x-obj.r*self.zoom < self.maxwh/2\
+                and y-obj.r*self.zoom < self.maxwh/2
             
-            if isoncamera or obj.repr == "Planet":    
+            if isoncamera or obj.repr == "Planet":
                 r = math.sqrt(x**2+y**2)
                 ange = math.atan2(-y, x)+self.ang
                 newx = r*math.cos(ange)+self.w/2
@@ -50,14 +53,14 @@ class Camera():
                 
                 newang = self.ang - obj.ang
                 obj.hearable = True
-                #a.append((obj, newx, newy, math.degrees(newang), self.zoom))
+                # a.append((obj, newx, newy, math.degrees(newang), self.zoom))
                 if obj.repr == "Planet" and not isoncamera:
                     obj.dont_draw = True
                 obj.draw(self.surface, int(newx), int(newy), math.degrees(newang), self.zoom)
             elif self.first_in_order:
                 obj.hearable = False
-        #print len(a)
-        #return a
+        # print len(a)
+        # return a
     
     def step(self):
         if self.zooming["in"]:

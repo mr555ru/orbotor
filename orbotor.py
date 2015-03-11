@@ -19,7 +19,6 @@
 import pygame
 
 from orbotor.gameprofile import *
-        
 
 
 def main(profile):
@@ -28,8 +27,8 @@ def main(profile):
     while 1:
         for e in pygame.event.get():
             if e.type == QUIT:
-                 pygame.quit()
-                 #exit()
+                pygame.quit()
+                # exit()
             elif e.type == profile.UPDAE_GAME:
                 profile.game_step()
             elif e.type == KEYDOWN or e.type == KEYUP:
@@ -38,13 +37,12 @@ def main(profile):
         profile.game_draw()
 
 
-
 if __name__ == "__main__":
-    #sys.argv = ["--lesshell","--hotseat"]
+    # sys.argv = ["--lesshell","--hotseat"]
     if "--experimental" in sys.argv:
-        draw_planet=True
+        draw_planet = True
     else:
-        draw_planet=False
+        draw_planet = False
     if "--nohell" in sys.argv:
         hell = (0, 0)
     elif "--lesshell" in sys.argv:

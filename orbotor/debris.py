@@ -19,8 +19,12 @@ import math
 from orbitable import Orbitable, GCD_Singleton
 from static_functions import *
 
-debris_collection = [imitate_debris(DEBRIS_COLORS[0], DEBRIS_COLORS[1], int(DEBRIS_R*DEBRIS_SCALING)) for i in xrange(30)]
+debris_collection = [imitate_debris(DEBRIS_COLORS[0],
+                     DEBRIS_COLORS[1],
+                     int(DEBRIS_R*DEBRIS_SCALING)) for i in xrange(30)]
+
 SPARKSPRITE = create_color_circle(Color("#FFFFAA"), 2*DEBRIS_SCALING)
+
 
 class Debris(Orbitable):
     def __init__(self, x, y, dx, dy):
@@ -34,17 +38,17 @@ class Debris(Orbitable):
         
         self.set_drawdelta()
 
-        self.dx = dx + (random.randint(0,40)-20)/30.0
-        self.dy = dy + (random.randint(0,40)-20)/30.0
+        self.dx = dx + (random.randint(0, 40)-20)/30.0
+        self.dy = dy + (random.randint(0, 40)-20)/30.0
         self.dang = random.random()*0.8-0.4
         
-        self.soundsys.initsound('debris',"debris_crack.wav")
+        self.soundsys.initsound('debris', "debris_crack.wav")
         
-        #print self.dang
+        # print self.dang
 
-        #print "debris initiated %f %f" % (self.dx, self.dy)
+        # print "debris initiated %f %f" % (self.dx, self.dy)
         
-    #def step(self):
+    # def step(self):
     #    Orbitable.step(self)
     #    self.colliding = self.nocollide == 0 and self.hearable
         
@@ -53,15 +57,14 @@ class Debris(Orbitable):
         self.derivative, offsets = better_rotozoom(self.sprite, t_ang, t_zoom, (self.sprite_off_x, self.sprite_off_y))
         screen.blit(self.derivative, (t_x-self.drawdx*t_zoom-offsets[0], t_y-self.drawdy*t_zoom-offsets[1]))
             
-
     def get_collision(self, other, vel, ang):
         if other.repr != "Spark" and not GCD_Singleton.loosening:
-            if random.randint(0,4) == 0:
+            if random.randint(0, 4) == 0:
                 m = 0
                 for i in xrange(random.randint(2, 7)):
                     m += 5
                     self.children.append(Debris(self.x, self.y, self.dx, self.dy))
-                for i in xrange(random.randint(0,3)):
+                for i in xrange(random.randint(0, 3)):
                     self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
                 self.m = m
                 Orbitable.get_collision(self, other, vel, ang)
@@ -79,7 +82,8 @@ class Debris(Orbitable):
     def destroy(self):
         self.exclude()
         self.colliding = False
-        #print "debris destroyed"
+        # print "debris destroyed"
+        
         
 class Spark(Debris):
     def __init__(self, x, y, dx, dy, impulse, ang):
@@ -91,7 +95,8 @@ class Spark(Debris):
         self.m = 1.5
         self.dx += impulse*random.random()*math.cos(ang)/self.m
         self.dy += impulse*random.random()*math.sin(ang)/self.m
-        self.deathtime = pygame.time.get_ticks() + random.randint(int(2000.0/max(1,impulse)),int(16000.0/max(1,impulse)))
+        self.deathtime = pygame.time.get_ticks() + \
+            random.randint(int(2000.0/max(1, impulse)), int(16000.0/max(1, impulse)))
         self.is_circle = True
         
     def step(self):

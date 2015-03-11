@@ -20,6 +20,7 @@ from quadtree import *
 
 from game_constants import MAX_OBJECTS
 
+
 class GlobalCollisionDetector():
     
     def __init__(self):
@@ -29,7 +30,7 @@ class GlobalCollisionDetector():
         self.loosening_limit = MAX_OBJECTS
         
     def set_planet(self, planet):
-        self.planet=planet
+        self.planet = planet
         bounds = QuadTreeBounds()
         bounds.get_from_planet(planet)
         self.quadtree = QuadTree(1, bounds)
@@ -42,7 +43,7 @@ class GlobalCollisionDetector():
         
     def step(self):
         self.loosening = len(self.orbitables) > self.loosening_limit
-        #checking = self.orbitables #+ self.priority
+        # checking = self.orbitables # + self.priority
         self.quadtree.reinsertlist(self.orbitables)
         for obj1 in self.orbitables:
             if obj1.GCD_REMOVE_ME_FLAG:
@@ -60,9 +61,9 @@ class GlobalCollisionDetector():
                     if not (obj1 is obj2) and obj1.colliding and obj2.colliding:
                         r = (obj1.x-obj2.x)**2+(obj1.y-obj2.y)**2
                         minr = (obj1.r + obj2.r)**2
-                        #print "%f <= %f" % (r, minr)
+                        # print "%f <= %f" % (r, minr)
                         if r <= minr:
-                            #Collision!
+                            # Collision!
                             
                             vel = abs(math.sqrt((obj2.dx-obj1.dx)**2 + (obj2.dy-obj1.dy)**2))
                             ang = math.atan2(obj2.dy-obj1.dy, obj2.dx-obj1.dx)

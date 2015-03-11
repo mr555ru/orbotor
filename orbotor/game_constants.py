@@ -37,5 +37,5 @@ MAX_OBJECTS = config.getint("Misc", "max_objects")
 
 DEBRIS_R = 6
 DEBRIS_SCALING = 3.0
-DEBRIS_COLORS = (Color("#555555"),Color("#888888"))
-HELLDEBRIS_COLORS = (Color("#303030"),Color("#777777"))
+DEBRIS_COLORS = (Color("#555555"), Color("#888888"))
+HELLDEBRIS_COLORS = (Color("#303030"), Color("#777777"))

@@ -1,2 +1,3 @@
 *.pyc
 sounds/lazarus-rising*
+flake8.txt

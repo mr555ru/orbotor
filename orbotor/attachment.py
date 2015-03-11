@@ -16,8 +16,9 @@
 
 import math
 
-from camera import Camerable 
+from camera import Camerable
 from static_functions import *
+
 
 class Attachment(Camerable):
     def __init__(self, ref, r, distx, disty):
@@ -29,22 +30,20 @@ class Attachment(Camerable):
         
         self.att_ang = math.atan2(-disty, distx)
         
-        #self.upd()
+        # self.upd()
         
-        self.sprite = None #Surface
+        self.sprite = None  # Surface
         self.derivative = None
         
-    
     def upd(self):
         self.ang = self.att_ang+self.ref.ang
         self.x = self.ref.x+self.dist*math.cos(self.ang)
         self.y = self.ref.y+self.dist*math.sin(self.ang)
         
-        
     def draw(self, screen, t_x, t_y, t_ang, t_zoom):
         if self.ref.spawned:
             self.derivative = pygame.transform.rotozoom(self.sprite, t_ang, t_zoom)
-            #self.derivative.set_colorkey(Color(ck))
+            # self.derivative.set_colorkey(Color(ck))
             screen.blit(self.derivative, (t_x-self.r*t_zoom, t_y-self.r*t_zoom))
 
     def step(self):

@@ -18,3 +18,5 @@
                               
                  F1 - output performance of 1 step to console
                  F5 - sound off/on
+
+                 Requirements: python 2.7, python-pygame, python-pil

@@ -20,7 +20,9 @@ from helldebris import HellDebris
 
 from orbitable import GCD_Singleton
 
+
 class HellDebrisCollection():
+    
     def __init__(self, players_spawn, planet, min=6, max=20):
         self.debris = []
         self.planet = planet
@@ -30,10 +32,10 @@ class HellDebrisCollection():
         self.generate()
 
     def generate(self):
-        cnt = random.randint(0,self.max-self.min)
-        #print "%d pieces of hell generated" % cnt
+        cnt = random.randint(0, self.max-self.min)
+        # print "%d pieces of hell generated" % cnt
         for i in xrange(cnt):
-            d = HellDebris(self.spawn[0] + random.randint(0,300)-150, self.spawn[1] + random.randint(0,100)-50, 0, 0)
+            d = HellDebris(self.spawn[0] + random.randint(0, 300)-150, self.spawn[1] + random.randint(0, 100)-50, 0, 0)
             d.initialspeed(self.planet.m, self.planet.x, self.planet.y)
             self.debris.append(d)
 

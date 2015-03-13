@@ -14,16 +14,12 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import math
-import random
-import os.path
-import sys
+import sys  # NOQA
 import profile
 import ConfigParser
 
 import pygame
 from pygame import *
-
 
 from static_functions import *
 import camera as camera
@@ -33,6 +29,7 @@ from orbitable import GCD_Singleton, SoundSystem_Singleton
 from helldebris_collection import HellDebrisCollection
 from team import Team
 from simplestats import SimpleStats
+
 
 wwidth = 1024
 wheight = 768
@@ -46,12 +43,23 @@ wheight = config.getint("Screen", "height")
 p1_name = config.get("Player", "P1_name")
 p2_name = config.get("Player", "P2_name")
 
-
 display = (wwidth, wheight)
 clock = pygame.time.Clock()
 
+
 class Profile():
-    def __init__(self, is_player2_present=False, is_player1_ai=False, is_player2_ai=False, player1_team="Green", player2_team="Red", greenteamsize=8, redteamsize=8, debris_min=6, debris_max=20, draw_planet=False, name=""):
+    
+    def __init__(self, is_player2_present=False,
+                 is_player1_ai=False,
+                 is_player2_ai=False,
+                 player1_team="Green",
+                 player2_team="Red",
+                 greenteamsize=8,
+                 redteamsize=8,
+                 debris_min=6,
+                 debris_max=20,
+                 draw_planet=False,
+                 name=""):
         self.p2 = is_player2_present
         self.p1_ai = is_player1_ai
         self.p2_ai = is_player2_ai
@@ -60,7 +68,7 @@ class Profile():
         
         mingreen = int(self.p1_team == "Green") + int(self.p2_team == "Green" and self.p2)
         minred = int(self.p1_team == "Red") + int(self.p2_team == "Red" and self.p2)
-        self.green = max(mingreen,greenteamsize)
+        self.green = max(mingreen, greenteamsize)
         self.red = max(minred, redteamsize)
         self.hellmin = debris_min
         self.hellmax = debris_max
@@ -70,8 +78,6 @@ class Profile():
         self.ERAD = 1000
         self.MAXRAD = 1700
         self.ORBHEIGHT = 350
-        
-        
         
     def game_init(self):
         pygame.init()
@@ -167,13 +173,12 @@ class Profile():
             
     def game_step(self):
         if self.PROFILESTEP:
-            profile.runctx("self._step()", globals(), {"self":self})
+            profile.runctx("self._step()", globals(), {"self": self})
         else:
             self._step()
             
     def _step(self):
-        
-        self.team2.step() #todo faster better stronger
+        self.team2.step()  # todo faster better stronger
         self.team1.step()
         self.hell.step()
         
@@ -185,10 +190,9 @@ class Profile():
         
         GCD_Singleton.step()
         
-            
     def game_draw(self):
         if self.PROFILESTEP:
-            profile.runctx("self._draw()", globals(), {"self":self})
+            profile.runctx("self._draw()", globals(), {"self": self})
             self.PROFILESTEP = False
         else:
             self._draw()
@@ -196,7 +200,8 @@ class Profile():
     def _draw(self):
         clock.tick(60)
         
-        tup =  [self.pl,] + self.team1.objectslist() + self.team2.objectslist() + self.hell.objectslist() + self.pl.cities
+        tup = [self.pl, ] + self.team1.objectslist() + self.team2.objectslist()\
+            + self.hell.objectslist() + self.pl.cities
         tup = tuple(tup)
         self.cam1.translate_coords(*tup)
         if self.p2:
@@ -210,23 +215,36 @@ class Profile():
         
         pygame.display.update()
         
+        
 def DefaultProfile(draw_planet, hell):
     return Profile(draw_planet=draw_planet, debris_min=hell[0], debris_max=hell[1])
 
+
 def HotseatProfile(draw_planet, hell):
-    return Profile(is_player2_present=True, draw_planet=draw_planet, debris_min=hell[0], debris_max=hell[1])
+    return Profile(is_player2_present=True, draw_planet=draw_planet,
+                   debris_min=hell[0], debris_max=hell[1])
+
 
 def RivalProfile(draw_planet, hell):
-    return Profile(is_player2_present=True, is_player2_ai=True, draw_planet=draw_planet, debris_min=hell[0], debris_max=hell[1])
+    return Profile(is_player2_present=True, is_player2_ai=True, draw_planet=draw_planet,
+                   debris_min=hell[0], debris_max=hell[1])
+
 
 def CoopProfile(draw_planet, hell):
-    return Profile(is_player2_present=True, player2_team="Green", draw_planet=draw_planet, debris_min=hell[0], debris_max=hell[1])
+    return Profile(is_player2_present=True, player2_team="Green", draw_planet=draw_planet,
+                   debris_min=hell[0], debris_max=hell[1])
+
 
 def SpectateProfile(draw_planet, hell):
-    return Profile(is_player1_ai=True, draw_planet=draw_planet, debris_min=hell[0], debris_max=hell[1])
+    return Profile(is_player1_ai=True, draw_planet=draw_planet,
+                   debris_min=hell[0], debris_max=hell[1])
+
 
 def SurvivalProfile(draw_planet):
-    return Profile(draw_planet=draw_planet, debris_min=35, debris_max=70, greenteamsize=1, redteamsize=0)
+    return Profile(draw_planet=draw_planet, debris_min=35, debris_max=70,
+                   greenteamsize=1, redteamsize=0)
+
 
 def CoopSurvivalProfile(draw_planet):
-    return Profile(is_player2_present=True, player2_team="Green", draw_planet=draw_planet, debris_min=35, debris_max=70, greenteamsize=2, redteamsize=0)
+    return Profile(is_player2_present=True, player2_team="Green", draw_planet=draw_planet,
+                   debris_min=35, debris_max=70, greenteamsize=2, redteamsize=0)

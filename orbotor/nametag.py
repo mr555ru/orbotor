@@ -20,7 +20,9 @@ from pygame import Color
 from camera import Camerable
 from game_constants import SYS_FONT
 
+
 class Nametag(Camerable):
+    
     def __init__(self, ref):
         Camerable.__init__(self)
         self.ref = ref
@@ -28,7 +30,6 @@ class Nametag(Camerable):
         self.upd()
         
         self.font = pygame.font.Font(SYS_FONT, 14)
-        
     
     def upd(self):
         self.x = self.ref.x

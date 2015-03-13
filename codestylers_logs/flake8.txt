@@ -1,44 +1,4 @@
-./orbotor/orbitable.py:19:1: F401 'pygame' imported but unused
-./orbotor/orbitable.py:25:14: E401 multiple imports on one line
-./orbotor/orbitable.py:30:1: E302 expected 2 blank lines, found 1
-./orbotor/orbitable.py:47:27: E261 at least two spaces before inline comment
-./orbotor/orbitable.py:47:28: E262 inline comment should start with '# '
-./orbotor/orbitable.py:67:5: E303 too many blank lines (2)
-./orbotor/orbitable.py:103:121: E501 line too long (134 > 120 characters)
-./orbotor/orbitable.py:109:5: E303 too many blank lines (4)
-./orbotor/orbitable.py:124:39: W292 no newline at end of file
-./orbotor/planet.py:23:1: E302 expected 2 blank lines, found 1
-./orbotor/planet.py:50:13: F841 local variable 'sprite_ratio' is assigned to but never used
-./orbotor/planet.py:58:61: E231 missing whitespace after ','
-./orbotor/planet.py:76:5: E303 too many blank lines (2)
-./orbotor/planet.py:93:121: E501 line too long (166 > 120 characters)
-./orbotor/planet.py:97:1: E302 expected 2 blank lines, found 1
-./orbotor/planet.py:114:46: W292 no newline at end of file
-./orbotor/quadtree.py:15:1: E302 expected 2 blank lines, found 1
-./orbotor/quadtree.py:44:1: E302 expected 2 blank lines, found 1
-./orbotor/quadtree.py:69:121: E501 line too long (136 > 120 characters)
-./orbotor/quadtree.py:70:25: E128 continuation line under-indented for visual indent
-./orbotor/quadtree.py:70:121: E501 line too long (134 > 120 characters)
-./orbotor/quadtree.py:71:25: E128 continuation line under-indented for visual indent
-./orbotor/quadtree.py:71:121: E501 line too long (134 > 120 characters)
-./orbotor/quadtree.py:72:25: E128 continuation line under-indented for visual indent
-./orbotor/quadtree.py:72:121: E501 line too long (134 > 120 characters)
-./orbotor/quadtree.py:83:9: E265 block comment should start with '# '
-./orbotor/quadtree.py:125:22: W292 no newline at end of file
-./orbotor/soundsystem.py:31:28: E231 missing whitespace after ','
-./orbotor/soundsystem.py:31:49: E231 missing whitespace after ','
-./orbotor/soundsystem.py:35:5: E303 too many blank lines (2)
-./orbotor/soundsystem.py:65:39: W292 no newline at end of file
-./orbotor/simplestats.py:27:1: E302 expected 2 blank lines, found 1
-./orbotor/simplestats.py:35:31: E231 missing whitespace after ','
-./orbotor/simplestats.py:40:45: E231 missing whitespace after ','
-./orbotor/simplestats.py:43:5: E303 too many blank lines (2)
-./orbotor/simplestats.py:49:121: E501 line too long (144 > 120 characters)
-./orbotor/simplestats.py:50:121: E501 line too long (148 > 120 characters)
-./orbotor/simplestats.py:66:121: E501 line too long (140 > 120 characters)
-./orbotor/simplestats.py:77:9: E265 block comment should start with '# '
-./orbotor/simplestats.py:86:33: E231 missing whitespace after ','
-./orbotor/simplestats.py:86:38: W292 no newline at end of file
+./orbotor/planet.py:51:13: F841 local variable 'sprite_ratio' is assigned to but never used
 ./orbotor/static_functions.py:1:1: E265 block comment should start with '# '
 ./orbotor/static_functions.py:27:1: E302 expected 2 blank lines, found 1
 ./orbotor/static_functions.py:34:1: E302 expected 2 blank lines, found 1
@@ -181,18 +141,16 @@
 ./orbotor/sputnik.py:629:28: W292 no newline at end of file
 14      E111 indentation is not a multiple of four
 1       E124 closing bracket does not match visual indentation
-3       E128 continuation line under-indented for visual indent
 1       E203 whitespace before ','
-52      E231 missing whitespace after ','
+46      E231 missing whitespace after ','
 1       E241 multiple spaces after ','
-5       E261 at least two spaces before inline comment
-5       E262 inline comment should start with '# '
-27      E265 block comment should start with '# '
-21      E302 expected 2 blank lines, found 1
-13      E303 too many blank lines (2)
-1       E401 multiple imports on one line
-16      E501 line too long (134 > 120 characters)
-2       F401 'pygame' imported but unused
+4       E261 at least two spaces before inline comment
+4       E262 inline comment should start with '# '
+25      E265 block comment should start with '# '
+15      E302 expected 2 blank lines, found 1
+8       E303 too many blank lines (2)
+7       E501 line too long (135 > 120 characters)
+1       F401 'math' imported but unused
 3       F841 local variable 'sprite_ratio' is assigned to but never used
 7       W291 trailing whitespace
-9       W292 no newline at end of file
+4       W292 no newline at end of file

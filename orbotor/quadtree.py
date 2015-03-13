@@ -11,7 +11,8 @@ class QuadTreeObject():
             self.bounds = QuadTreeBounds(self)
         else:
             self.bounds.get_from_object(self)
-    
+
+
 class QuadTreeBounds():
     
     def __init__(self, obj=None, x1=0, y1=0, x2=0, y2=0):
@@ -41,6 +42,7 @@ class QuadTreeBounds():
         self.y1 = pl.y-pl.r2*2
         self.y2 = pl.y+pl.r2*2
 
+
 class QuadTree():
     
     def __init__(self, level, bounds):
@@ -66,10 +68,10 @@ class QuadTree():
         
     def split(self):
         if len(self.nodes) == 0:
-            self.nodes = [QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.x1, y1=self.y1, x2=self.subwidth, y2=self.subheight)),
-                        QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.subwidth, y1=self.y1, x2=self.x2, y2=self.subheight)),
-                        QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.x1, y1=self.subheight, x2=self.subwidth, y2=self.y2)),
-                        QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.subwidth, y1=self.subheight, x2=self.x2, y2=self.y2))]
+            self.nodes = [QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.x1, y1=self.y1, x2=self.subwidth, y2=self.subheight)),  # noqa
+                          QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.subwidth, y1=self.y1, x2=self.x2, y2=self.subheight)),  # noqa
+                          QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.x1, y1=self.subheight, x2=self.subwidth, y2=self.y2)),  # noqa
+                          QuadTree(self.level+1, QuadTreeBounds(obj=None, x1=self.subwidth, y1=self.subheight, x2=self.x2, y2=self.y2))]  # noqa
         
     def is_obj_in_me(self, objb):
         return objb.x1 >= self.x1 and objb.y1 >= self.y1 and objb.x2 <= self.x2 and objb.y2 <= self.y2
@@ -80,8 +82,8 @@ class QuadTree():
         else:
             objb = obj.bounds
         
-        #if not self.is_obj_in_me(objb):
-        #    return -1
+        # if not self.is_obj_in_me(objb):
+        #     return -1
         
         if objb.y2 < self.subheight+self.y1:
             if objb.x2 < self.subwidth+self.x1:

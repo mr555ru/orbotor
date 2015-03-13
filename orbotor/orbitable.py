@@ -16,16 +16,18 @@
 
 import math
 
-import pygame
 from pygame import *
 
 from static_functions import *
 from gcd import GlobalCollisionDetector
 from soundsystem import SoundSystem
-import camera, quadtree
+import camera
+import quadtree
+
                      
 GCD_Singleton = GlobalCollisionDetector()
 SoundSystem_Singleton = SoundSystem()
+
 
 class Orbitable(camera.Camerable, quadtree.QuadTreeObject):
     def __init__(self, x, y, r, m, ang=0, dang=0, dx=0, dy=0, nocollidesteps=0, colliding=True):
@@ -44,7 +46,7 @@ class Orbitable(camera.Camerable, quadtree.QuadTreeObject):
         self.repr = "blank"
         GCD_Singleton.be_added(self)
         self.GCD_REMOVE_ME_FLAG = False
-        self.sprite = None #Surface
+        self.sprite = None  # Surface
         self.derivative = None
         self.nocollide = nocollidesteps
         self.maxnocollide = nocollidesteps
@@ -63,7 +65,6 @@ class Orbitable(camera.Camerable, quadtree.QuadTreeObject):
         self.drawdx = self.sprite.get_width()/2
         self.drawdy = self.sprite.get_height()/2
         
-           
     def affected(self, mass, x, y):
         R = math.sqrt((x-self.x)**2 + (y-self.y)**2)
         a = G*mass/(R**2)
@@ -100,12 +101,12 @@ class Orbitable(camera.Camerable, quadtree.QuadTreeObject):
             self.colliding = True
         
     def draw(self, screen, t_x, t_y, t_ang, t_zoom):
-        self.derivative, offsets = better_rotozoom(self.sprite, t_ang, t_zoom, (self.sprite_off_x, self.sprite_off_y), self.is_circle)
-        screen.blit(self.derivative, (t_x-self.drawdx*t_zoom-offsets[0], t_y-self.drawdy*t_zoom-offsets[1]))
-        
-        
-        
-    
+        self.derivative, offsets = better_rotozoom(self.sprite, t_ang, t_zoom,
+                                                   (self.sprite_off_x, self.sprite_off_y),
+                                                   self.is_circle)
+        screen.blit(self.derivative, (t_x-self.drawdx*t_zoom-offsets[0],
+                                      t_y-self.drawdy*t_zoom-offsets[1]))
+
     def get_collision(self, other, vel, ang):
         self.dx += other.m/float(self.m) * vel * math.cos(ang)
         self.dy += other.m/float(self.m) * vel * math.sin(ang)

@@ -20,6 +20,7 @@ import os
 from static_functions import *
 from camera import Camerable
 
+
 class Planet(Camerable):
 
     def __init__(self, surfaces, radius, maxradius, sprite=None):
@@ -55,7 +56,7 @@ class Planet(Camerable):
                        City(self, "Moscow", 3, 0.7),
                        City(self, "Tokyo", 9.3, 0.95),
                        City(self, "Beijing", 7.7, 0.85),
-                       City(self, "Los Angeles", -7.8, 0.95),]
+                       City(self, "Los Angeles", -7.8, 0.95), ]
         
     def calc_polygons(self, t_x, t_y, t_ang, t_zoom):
         new_polygons = {}
@@ -72,7 +73,6 @@ class Planet(Camerable):
             new_polygons[name] = new_polygon
         return new_polygons
         
-
     def draw(self, camera_bg, t_x, t_y, t_ang, t_zoom):
         camera_bg.fill(self.bg)
         pygame.draw.circle(camera_bg, Color("#002520"), (t_x, t_y), int(self.r2*t_zoom))
@@ -90,9 +90,14 @@ class Planet(Camerable):
                     pygame.draw.polygon(camera_bg, c, polygon)
                 
             else:
-                self.derivative, offsets = better_rotozoom(self.sprite, t_ang, t_zoom*float(self.r*2)/self.sprite.get_width(), (self.sprite_off_x, self.sprite_off_y))
+                # TODO looks bad, rewrite with 120 chars/line in mind
+                self.derivative, offsets = \
+                    better_rotozoom(self.sprite, t_ang,
+                                    t_zoom*float(self.r*2)/self.sprite.get_width(),
+                                    (self.sprite_off_x, self.sprite_off_y))
                 camera_bg.blit(self.derivative, (t_x-t_zoom*self.r, t_y-t_zoom*self.r))
         self.dont_draw = False
+
 
 class City(Camerable):
 

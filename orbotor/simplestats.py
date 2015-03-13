@@ -24,6 +24,7 @@ from orbitable import SoundSystem_Singleton
 
 from game_constants import STATS_FONT
 
+
 class SimpleStats():
     def __init__(self, team1, team2, player):
         self.team1 = team1
@@ -32,22 +33,24 @@ class SimpleStats():
 
         self.font = pygame.font.Font(STATS_FONT, 18)
         
-        self.bg = Surface((350,160), flags=SRCALPHA)
+        self.bg = Surface((350, 160), flags=SRCALPHA)
         
         self.soundsys = SoundSystem_Singleton
         
         self.soundid = 'warn_%s' % player.name
-        self.soundsys.initsound(self.soundid,'warning.wav')
-
+        self.soundsys.initsound(self.soundid, 'warning.wav')
 
     def draw(self, screen):
         string1 = "%s: %d" % (self.team1.name, self.team2.deaths)
         string2 = "%s: %d" % (self.team2.name, self.team1.deaths)
         string3 = "You: %d frags, %d deaths" % (self.player.frags, self.player.deaths)
-        string4 = "Fuel: %.4f, ammo %d, mass %.2f" % (self.player.fuel, self.player.ammo, self.player.m)
+        string4 = "Fuel: %.4f, ammo %d, mass %.2f" % \
+            (self.player.fuel, self.player.ammo, self.player.m)
         if self.player.spawned:
-            string5 = "Alive for %.2fs, record %.2fs" % ((pygame.time.get_ticks() - self.player.spawntime)/1000.0, self.player.max_alive/1000.0)
-            string6 = "peri %d, apo %d, now %d, ano %d" % (self.player.peri, self.player.apo, self.player.height, math.degrees(self.player.anomaly))
+            string5 = "Alive for %.2fs, record %.2fs" % \
+                ((pygame.time.get_ticks() - self.player.spawntime)/1000.0, self.player.max_alive/1000.0)
+            string6 = "peri %d, apo %d, now %d, ano %d" % \
+                (self.player.peri, self.player.apo, self.player.height, math.degrees(self.player.anomaly))
             string6 += "º"[1]
             if self.player.apo >= self.player.planet.r2:
                 string7 = "     WARNING: ORBIT TOO HIGH!"
@@ -63,7 +66,8 @@ class SimpleStats():
                 self.soundsys.removelooped(self.soundid)
         else:
             self.soundsys.removelooped(self.soundid)
-            string5 = "Orbited %.2fs, record %.2fs" % ((self.player.deathtime - self.player.spawntime)/1000.0, self.player.max_alive/1000.0)
+            string5 = "Orbited %.2fs, record %.2fs" % \
+                ((self.player.deathtime - self.player.spawntime)/1000.0, self.player.max_alive/1000.0)
             string6 = " "
             string7 = " "
             sprite7 = self.font.render(string7, True, Color("#DD0000"))
@@ -74,7 +78,7 @@ class SimpleStats():
         sprite4 = self.font.render(string4, True, self.player.color)
         sprite5 = self.font.render(string5, True, self.player.color)
         sprite6 = self.font.render(string6, True, self.player.color)
-        #sprite7
+        # sprite7
         self.bg.fill(Color("#FFFFFFAA"))
         self.bg.blit(sprite1, (5, -5))
         self.bg.blit(sprite2, (5, 12))
@@ -83,4 +87,4 @@ class SimpleStats():
         self.bg.blit(sprite5, (5, 73))
         self.bg.blit(sprite6, (5, 100))
         self.bg.blit(sprite7, (5, 127))
-        screen.blit(self.bg, (10,10))
+        screen.blit(self.bg, (10, 10))

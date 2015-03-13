@@ -28,9 +28,8 @@ class SoundSystem():
         self.sounds = {}
         self.looped = []
         
-        self.initsound("bg","lazarus-rising.ogg",1.0)
+        self.initsound("bg", "lazarus-rising.ogg", 1.0)
         self.loopsound("bg")
-        
         
     def initsound(self, id, filename, volume=0.7):
         if id not in self.sounds.keys():

@@ -36,10 +36,17 @@ with open("botnames.txt", "r") as f:
     bot_names = f.readlines()
 random.shuffle(bot_names)
 
+
 class Sputnik(Orbitable):
 
     def __init__(self, c, x, y, planet, is_ai=False):
-        Orbitable.__init__(self, x, y, r=8, m=15, dx=0, dy=0, ang=random.random()*2*math.pi, dang=0, nocollidesteps=20, colliding=True)
+        Orbitable.__init__(self,
+                           x, y,
+                           r=8, m=15, dx=0, dy=0,
+                           ang=random.random()*2*math.pi,
+                           dang=0,
+                           nocollidesteps=20,
+                           colliding=True)
         
         GCD_Singleton.make_priority(self)
         self.color = Color(c)
@@ -51,9 +58,8 @@ class Sputnik(Orbitable):
         self.reload()
         
         self.m = float(self.hull_mass + self.fuel * FUEL_MASS + self.ammo * BULLET_MASS)
-        
 
-        #self.sprite = create_color_circle(self.color, self.r)
+        # self.sprite = create_color_circle(self.color, self.r)
         if c == "#009900":
             self.sprite = pil_process(os.path.join("images", "green_ship.png"))
             
@@ -71,7 +77,7 @@ class Sputnik(Orbitable):
             
         self.set_drawdelta()
         
-        #self.nose = Nose(self)
+        # self.nose = Nose(self)
         self.nametag = Nametag(self)
         self.children = []
 
@@ -82,10 +88,8 @@ class Sputnik(Orbitable):
         
         self.spawntime = pygame.time.get_ticks()
         self.max_alive = 0
-
         
-        
-        #thrusters
+        # thrusters
         self.angularforce = 0.0007
         self.forwardforce = 0.03
         self.turboforce = 0.14
@@ -94,16 +98,16 @@ class Sputnik(Orbitable):
         
         self.max_dang = 0.16
         
-        self.visualthrusters = [Thruster(self, ("fw",), 4, -self.r, 0),
-                                Thruster(self, ("turbo",), 7 ,-self.r,0),
-                                Thruster(self, ("back","ang_cw","left", "killrot", "ai_cw"), 2, self.r*0.7, 4),
-                                Thruster(self, ("back","ang_ccw","right", "killrot", "ai_ccw"), 2, self.r*0.7, -4),
-                                Thruster(self, ("ang_ccw","left", "killrot", "ai_ccw"), 2, -self.r*0.4, 7),
-                                Thruster(self, ("ang_cw","right", "killrot", "ai_cw"), 2, -self.r*0.4, -7),
-                                Thruster(self, ("turbo_left",), 6, 0,10),
-                                Thruster(self, ("turbo_right",), 6, 0,-10),
-                                Thruster(self, ("turbo_back",), 5, self.r, 0)
-                               ]
+        self.visualthrusters = [Thruster(self, ("fw", ), 4, -self.r, 0),
+                                Thruster(self, ("turbo", ), 7, -self.r, 0),
+                                Thruster(self, ("back", "ang_cw", "left", "killrot", "ai_cw"), 2, self.r*0.7, 4),
+                                Thruster(self, ("back", "ang_ccw", "right", "killrot", "ai_ccw"), 2, self.r*0.7, -4),
+                                Thruster(self, ("ang_ccw", "left", "killrot", "ai_ccw"), 2, -self.r*0.4, 7),
+                                Thruster(self, ("ang_cw", "right", "killrot", "ai_cw"), 2, -self.r*0.4, -7),
+                                Thruster(self, ("turbo_left", ), 6, 0, 10),
+                                Thruster(self, ("turbo_right", ), 6, 0, -10),
+                                Thruster(self, ("turbo_back", ), 5, self.r, 0)
+                                ]
         
         self.planet = planet
         
@@ -111,7 +115,7 @@ class Sputnik(Orbitable):
         
         if self.is_ai:
             if len(bot_names) == 0:
-                self.name = "[bot] Bot_%d" % random.randint(1000,9999)
+                self.name = "[bot] Bot_%d" % random.randint(1000, 9999)
             else:
                 self.name = "[bot] %s" % bot_names.pop()[:-1]
 
@@ -145,14 +149,14 @@ class Sputnik(Orbitable):
         self.peri = 0
         self.apo = 0
         self.height = 0
-        #self.ecc = 0
+        # self.ecc = 0
         self.anomaly = 0
         
-        self.soundsys.initsound('kill',"kill.wav")
-        self.soundsys.initsound('fire',"shoot.wav")
-        self.soundsys.initsound('turbo',"turbo.wav")
-        self.soundsys.initsound('respawn',"respawn.wav")
-        self.soundsys.initsound('noammo',"noammo.wav")
+        self.soundsys.initsound('kill', "kill.wav")
+        self.soundsys.initsound('fire', "shoot.wav")
+        self.soundsys.initsound('turbo', "turbo.wav")
+        self.soundsys.initsound('respawn', "respawn.wav")
+        self.soundsys.initsound('noammo', "noammo.wav")
         
         self.focused = False
         
@@ -166,7 +170,6 @@ class Sputnik(Orbitable):
         print "%s is now %s" % (self.name, new_name)
         self.name = new_name
         
-        
     def get_peri_apo(self):
         r = math.sqrt((self.x-self.planet.x)**2 + (self.y-self.planet.y)**2)
         v = math.sqrt(self.dx**2 + self.dy**2)
@@ -176,10 +179,11 @@ class Sputnik(Orbitable):
         self.peri, self.apo = get_peri_apo(r, v, ang, G, self.planet.m)
         self.height = r
         
-        self.anomaly = math.atan2((r*v*v/(G*self.planet.m))*math.sin(ang)*math.cos(ang),((r*v*v/(G*self.planet.m))*math.sin(ang)-1))
-        #self.ecc = math.sqrt((((r*v*v)/(G*self.planet.m)-1)**2) * (math.cos(ang-math.pi/2)**2) + (math.sin(ang-math.pi/2)**2))
+        self.anomaly = math.atan2((r*v*v/(G*self.planet.m))*math.sin(ang)*math.cos(ang),
+                                  ((r*v*v/(G*self.planet.m))*math.sin(ang)-1))
+        # self.ecc = math.sqrt((((r*v*v)/(G*self.planet.m)-1)**2) * (math.cos(ang-math.pi/2)**2) + (math.sin(ang-math.pi/2)**2)) # noqa
         
-    def draw_orbit(self, camera): #DOES NOT WORK
+    def draw_orbit(self, camera):  # DOES NOT WORK
         ang_peri = math.atan2(self.y-self.planet.y, self.x-self.planet.x) - self.anomaly
         
         a = (self.peri+self.apo)/2
@@ -199,15 +203,13 @@ class Sputnik(Orbitable):
         
         surf_ang = camera.ang - ang_peri
         
-        e_surface = better_rotozoom(e_surface, surf_ang, camera.zoom, (0,0))
+        e_surface = better_rotozoom(e_surface, surf_ang, camera.zoom, (0, 0))
         camera.surface.blit(e_surface[0], (surf_x, surf_y))
         
-        
-
     def draw(self, screen, t_x, t_y, t_ang, t_zoom):
         if self.spawned:
-            #self.nose.draw(screen, t_x, t_y, t_ang, t_zoom)
-            #for thruster in self.visualthrusters:
+            # self.nose.draw(screen, t_x, t_y, t_ang, t_zoom)
+            # for thruster in self.visualthrusters:
             #    thruster.draw(screen, t_x, t_y, t_ang, t_zoom)
             Orbitable.draw(self, screen, t_x, t_y, t_ang, t_zoom)
 
@@ -259,28 +261,28 @@ class Sputnik(Orbitable):
                 self.dy += self.turboforce*math.sin(self.ang) * self.hull_mass*1.5/self.m
                 self.fuel -= self.turboconsum
             else:
-                self.thrusters_on["turbo"] = False 
+                self.thrusters_on["turbo"] = False
         if self.thrusters_on["turbo_left"]:
             if self.fuel > self.turboconsum:
                 self.dx += self.turboforce*math.cos(self.ang+math.pi/2) * self.hull_mass*1.5/self.m
                 self.dy += self.turboforce*math.sin(self.ang+math.pi/2) * self.hull_mass*1.5/self.m
                 self.fuel -= self.turboconsum
             else:
-                self.thrusters_on["turbo_left"] = False 
+                self.thrusters_on["turbo_left"] = False
         if self.thrusters_on["turbo_right"]:
             if self.fuel > self.turboconsum:
                 self.dx += self.turboforce*math.cos(self.ang-math.pi/2) * self.hull_mass*1.5/self.m
                 self.dy += self.turboforce*math.sin(self.ang-math.pi/2) * self.hull_mass*1.5/self.m
                 self.fuel -= self.turboconsum
             else:
-                self.thrusters_on["turbo_right"] = False 
+                self.thrusters_on["turbo_right"] = False
         if self.thrusters_on["turbo_back"]:
             if self.fuel > self.turboconsum:
                 self.dx -= self.turboforce*math.cos(self.ang) * self.hull_mass*1.5/self.m
                 self.dy -= self.turboforce*math.sin(self.ang) * self.hull_mass*1.5/self.m
                 self.fuel -= self.turboconsum
             else:
-                self.thrusters_on["turbo_back"] = False 
+                self.thrusters_on["turbo_back"] = False
         if self.thrusters_on["back"]:
             if self.fuel > self.linearforce:
                 self.dx -= self.linearforce*math.cos(self.ang) * self.hull_mass*1.5/self.m
@@ -330,7 +332,9 @@ class Sputnik(Orbitable):
                 if self.nearest_opponent[0] is not None:
                     if self.nearest_opponent[0].spawned:
                         self.killall_thrusters()
-                        dang = min_max_value(-self.max_dang*self.hull_mass*1.2/self.m, self.max_dang*self.hull_mass*1.2/self.m, (self.nearest_opponent[2]-self.ang)/5.0)
+                        dang = min_max_value(-self.max_dang*self.hull_mass*1.2/self.m,
+                                             self.max_dang*self.hull_mass*1.2/self.m,
+                                             (self.nearest_opponent[2]-self.ang)/5.0)
                         if self.fuel > self.angularforce:
                             if dang > 0.01:
                                 self.thrusters_on["ai_ccw"] = True
@@ -344,22 +348,30 @@ class Sputnik(Orbitable):
                 else:
                     self.smart_time = pygame.time.get_ticks()
                 
-                    
     def killall_thrusters(self):
         for key, value in self.thrusters_on.items():
             self.thrusters_on[key] = False
 
     def set_random_thruster(self):
-        key = random.choice(("fw", "back", "left", "right", "ang_cw", "ang_ccw", "turbo", "killrot", "turbo_back", "turbo_left", "turbo_right"))
+        key = random.choice(("fw",
+                             "back",
+                             "left",
+                             "right",
+                             "ang_cw",
+                             "ang_ccw",
+                             "turbo",
+                             "killrot",
+                             "turbo_back",
+                             "turbo_left",
+                             "turbo_right"))
         self.thrusters_on[key] = True
-        if key in ("turbo", "killrot", "turbo_left", "turbo_right", "turbo_back","fw"):
+        if key in ("turbo", "killrot", "turbo_left", "turbo_right", "turbo_back", "fw"):
             self.ai_random_thruster_time = pygame.time.get_ticks() + random.randint(100, 300)
-            if random.randint(0,10) == 0 and self.hearable:
+            if random.randint(0, 10) == 0 and self.hearable:
                 self.soundsys.playsound('turbo')
         else:
             self.ai_random_thruster_time = pygame.time.get_ticks() + random.randint(300, 1250)
-
-            
+ 
     def catch_kb_event(self, e):
         if e.type == KEYDOWN:
             applyval = True
@@ -404,7 +416,7 @@ class Sputnik(Orbitable):
             self.destroy(reason="selfdestroy")
         elif e.key == K_SPACE and e.type == KEYDOWN:
             self.fire()
-            #print ((MAXOBJECTS-len(GCD.orbitables))/float(MAXOBJECTS))**8
+            # print ((MAXOBJECTS-len(GCD.orbitables))/float(MAXOBJECTS))**8
         else:
             return 0
 
@@ -452,7 +464,7 @@ class Sputnik(Orbitable):
             self.destroy()
         elif e.key == K_RETURN and e.type == KEYDOWN:
             self.fire()
-            #print ((MAXOBJECTS-len(GCD.orbitables))/float(MAXOBJECTS))**8
+            # print ((MAXOBJECTS-len(GCD.orbitables))/float(MAXOBJECTS))**8
         else:
             return 0
 
@@ -479,7 +491,7 @@ class Sputnik(Orbitable):
             if pygame.time.get_ticks() - self.spawntime > self.max_alive:
                 self.max_alive = pygame.time.get_ticks() - self.spawntime
         
-        #self.nose.upd()
+        # self.nose.upd()
         self.nametag.upd()
         for thruster in self.visualthrusters:
             thruster.upd()
@@ -507,7 +519,7 @@ class Sputnik(Orbitable):
         else:
             if random.randint(0, 20) == 0:
                 self.set_random_thruster()
-        if random.randint(0,  110) == 0:
+        if random.randint(0, 110) == 0:
             self.fire()
         if self.smart_time == 0:
             if random.randint(0, 200) == 0:
@@ -521,9 +533,9 @@ class Sputnik(Orbitable):
                 self.killall_thrusters()
                 self.thrusters_on["ai_ccw"] = True
                 self.thrusters_on["ai_cw"] = True
-                a = math.atan2((self.y-self.planet.y),(self.x-self.planet.x))
+                a = math.atan2((self.y-self.planet.y), (self.x-self.planet.x))
                 ang = a - math.pi/2 - (math.pi - abs(self.anomaly))/2
-                #self.ang = ang
+                # self.ang = ang
                 
                 self.dx += self.forwardforce*math.cos(ang)
                 self.dy += self.forwardforce*math.sin(ang)
@@ -533,19 +545,18 @@ class Sputnik(Orbitable):
                 self.killall_thrusters()
                 self.thrusters_on["ai_ccw"] = True
                 self.thrusters_on["ai_cw"] = True
-                a = math.atan2((self.y-self.planet.y),(self.x-self.planet.x))
+                a = math.atan2((self.y-self.planet.y), (self.x-self.planet.x))
                 ang = a + math.pi/2 - abs(self.anomaly)/2
-                #self.ang = ang
+                # self.ang = ang
                 
                 self.dx += self.forwardforce*math.cos(ang)
                 self.dy += self.forwardforce*math.sin(ang)
             
-        
     def objectslist(self):
         return [self, self.nametag] + self.children + self.visualthrusters
 
     def destroy(self, reason="unknown"):
-        #if self.nodebris > 0:
+        # if self.nodebris > 0:
         #    self.nodebris -= 1
         if self.spawned:
             if self.hearable:
@@ -560,7 +571,7 @@ class Sputnik(Orbitable):
             self.nocollide = 0
             self.team_notice_dead = True
             if not GCD_Singleton.loosening:
-                for i in xrange(random.randint(2,4)):
+                for i in xrange(random.randint(2, 4)):
                     self.children.append(Debris(self.x, self.y, self.dx, self.dy))
             else:
                 self.children.append(Debris(self.x, self.y, self.dx, self.dy))
@@ -577,8 +588,8 @@ class Sputnik(Orbitable):
         self.spawned = True
         self.colliding = False
         self.nocollide = self.maxnocollide
-        self.x = self.spawn[0]+random.randint(0,100)-200
-        self.y = self.spawn[1]+random.randint(0,100)-200
+        self.x = self.spawn[0]+random.randint(0, 100)-200
+        self.y = self.spawn[1]+random.randint(0, 100)-200
         self.dang = 0
         self.initialspeed(self.planet.m, self.planet.x, self.planet.y)
         
@@ -586,7 +597,7 @@ class Sputnik(Orbitable):
         if other.repr == "Sputnik" or other.repr == "Debris":
             Orbitable.get_collision(self, other, vel, ang)
             if not GCD_Singleton.loosening:
-                for i in xrange(random.randint(6,20)):
+                for i in xrange(random.randint(6, 20)):
                     self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
             if other.repr == "Sputnik":
                 self.destroy(reason="collision with %s" % other.name)
@@ -594,7 +605,7 @@ class Sputnik(Orbitable):
                 self.destroy(reason="Debris")
         elif other.repr == "Bullet" and not other.color == self.color:
             Orbitable.get_collision(self, other, vel, ang)
-            for i in xrange(random.randint(6,20)):
+            for i in xrange(random.randint(6, 20)):
                 self.children.append(Spark(self.x, self.y, self.dx, self.dy, vel*other.m, ang))
             self.destroy(reason=other.ownername + "'s bullet")
             other.iamakiller = True

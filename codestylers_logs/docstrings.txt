@@ -116,71 +116,71 @@
         D100: Docstring missing
 ./orbotor/sputnik.py:1 at module level:
         D100: Docstring missing
-./orbotor/sputnik.py:39 in public class `Sputnik`:
+./orbotor/sputnik.py:40 in public class `Sputnik`:
         D101: Docstring missing
-./orbotor/sputnik.py:41 in public method `__init__`:
+./orbotor/sputnik.py:42 in public method `__init__`:
         D102: Docstring missing
-./orbotor/sputnik.py:161 in public method `focus`:
+./orbotor/sputnik.py:165 in public method `focus`:
         D102: Docstring missing
-./orbotor/sputnik.py:165 in public method `set_name`:
+./orbotor/sputnik.py:169 in public method `set_name`:
         D102: Docstring missing
-./orbotor/sputnik.py:170 in public method `get_peri_apo`:
+./orbotor/sputnik.py:173 in public method `get_peri_apo`:
         D102: Docstring missing
-./orbotor/sputnik.py:182 in public method `draw_orbit`:
+./orbotor/sputnik.py:186 in public method `draw_orbit`:
         D102: Docstring missing
-./orbotor/sputnik.py:207 in public method `draw`:
+./orbotor/sputnik.py:209 in public method `draw`:
         D102: Docstring missing
-./orbotor/sputnik.py:214 in public method `fire`:
+./orbotor/sputnik.py:216 in public method `fire`:
         D102: Docstring missing
-./orbotor/sputnik.py:228 in public method `execute_thrusters`:
+./orbotor/sputnik.py:230 in public method `execute_thrusters`:
         D102: Docstring missing
-./orbotor/sputnik.py:306 in public method `set_opponent_team`:
+./orbotor/sputnik.py:308 in public method `set_opponent_team`:
         D102: Docstring missing
-./orbotor/sputnik.py:309 in public method `get_nearest_opponent`:
+./orbotor/sputnik.py:311 in public method `get_nearest_opponent`:
         D102: Docstring missing
-./orbotor/sputnik.py:318 in public method `init_smart_behavior`:
+./orbotor/sputnik.py:320 in public method `init_smart_behavior`:
         D102: Docstring missing
-./orbotor/sputnik.py:322 in public method `behave_smart`:
+./orbotor/sputnik.py:324 in public method `behave_smart`:
         D102: Docstring missing
-./orbotor/sputnik.py:348 in public method `killall_thrusters`:
+./orbotor/sputnik.py:351 in public method `killall_thrusters`:
         D102: Docstring missing
-./orbotor/sputnik.py:352 in public method `set_random_thruster`:
+./orbotor/sputnik.py:355 in public method `set_random_thruster`:
         D102: Docstring missing
-./orbotor/sputnik.py:363 in public method `catch_kb_event`:
+./orbotor/sputnik.py:375 in public method `catch_kb_event`:
         D102: Docstring missing
-./orbotor/sputnik.py:411 in public method `catch_kb_event_hotseat`:
+./orbotor/sputnik.py:423 in public method `catch_kb_event_hotseat`:
         D102: Docstring missing
-./orbotor/sputnik.py:459 in public method `affected`:
+./orbotor/sputnik.py:471 in public method `affected`:
         D102: Docstring missing
-./orbotor/sputnik.py:464 in public method `step`:
+./orbotor/sputnik.py:476 in public method `step`:
         D102: Docstring missing
-./orbotor/sputnik.py:502 in public method `ai_step`:
+./orbotor/sputnik.py:514 in public method `ai_step`:
         D102: Docstring missing
-./orbotor/sputnik.py:544 in public method `objectslist`:
+./orbotor/sputnik.py:555 in public method `objectslist`:
         D102: Docstring missing
-./orbotor/sputnik.py:547 in public method `destroy`:
+./orbotor/sputnik.py:558 in public method `destroy`:
         D102: Docstring missing
-./orbotor/sputnik.py:573 in public method `respawn`:
+./orbotor/sputnik.py:584 in public method `respawn`:
         D102: Docstring missing
-./orbotor/sputnik.py:585 in public method `get_collision`:
+./orbotor/sputnik.py:596 in public method `get_collision`:
         D102: Docstring missing
-./orbotor/sputnik.py:603 in public method `get_too_close`:
+./orbotor/sputnik.py:614 in public method `get_too_close`:
         D209: Put multi-line docstring closing quotes on separate line
-./orbotor/sputnik.py:603 in public method `get_too_close`:
+./orbotor/sputnik.py:614 in public method `get_too_close`:
         D202: No blank lines allowed *after* method docstring, found 1
-./orbotor/sputnik.py:603 in public method `get_too_close`:
+./orbotor/sputnik.py:614 in public method `get_too_close`:
         D400: First line should end with '.', not ')'
-./orbotor/sputnik.py:603 in public method `get_too_close`:
+./orbotor/sputnik.py:614 in public method `get_too_close`:
         D205: Blank line missing between one-line summary and description
-./orbotor/sputnik.py:615 in public method `get_too_far`:
+./orbotor/sputnik.py:626 in public method `get_too_far`:
         D102: Docstring missing
-./orbotor/sputnik.py:618 in public method `way_too_far`:
+./orbotor/sputnik.py:629 in public method `way_too_far`:
         D102: Docstring missing
-./orbotor/sputnik.py:621 in public method `refuel`:
+./orbotor/sputnik.py:632 in public method `refuel`:
         D102: Docstring missing
-./orbotor/sputnik.py:624 in public method `reload`:
+./orbotor/sputnik.py:635 in public method `reload`:
         D102: Docstring missing
-./orbotor/sputnik.py:627 in public method `initialspeed`:
+./orbotor/sputnik.py:638 in public method `initialspeed`:
         D102: Docstring missing
 ./orbotor/nametag.py:1 at module level:
         D100: Docstring missing

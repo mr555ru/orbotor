@@ -1,67 +1,4 @@
 ./orbotor/planet.py:51:13: F841 local variable 'sprite_ratio' is assigned to but never used
-./orbotor/sputnik.py:39:1: E302 expected 2 blank lines, found 1
-./orbotor/sputnik.py:42:121: E501 line too long (135 > 120 characters)
-./orbotor/sputnik.py:56:9: E265 block comment should start with '# '
-./orbotor/sputnik.py:56:9: E303 too many blank lines (2)
-./orbotor/sputnik.py:74:9: E265 block comment should start with '# '
-./orbotor/sputnik.py:88:9: E265 block comment should start with '# '
-./orbotor/sputnik.py:88:9: E303 too many blank lines (3)
-./orbotor/sputnik.py:98:61: E203 whitespace before ','
-./orbotor/sputnik.py:98:62: E231 missing whitespace after ','
-./orbotor/sputnik.py:98:70: E231 missing whitespace after ','
-./orbotor/sputnik.py:99:55: E231 missing whitespace after ','
-./orbotor/sputnik.py:99:64: E231 missing whitespace after ','
-./orbotor/sputnik.py:100:55: E231 missing whitespace after ','
-./orbotor/sputnik.py:100:65: E231 missing whitespace after ','
-./orbotor/sputnik.py:101:58: E231 missing whitespace after ','
-./orbotor/sputnik.py:102:57: E231 missing whitespace after ','
-./orbotor/sputnik.py:103:69: E231 missing whitespace after ','
-./orbotor/sputnik.py:104:70: E231 missing whitespace after ','
-./orbotor/sputnik.py:106:32: E124 closing bracket does not match visual indentation
-./orbotor/sputnik.py:114:65: E231 missing whitespace after ','
-./orbotor/sputnik.py:148:9: E265 block comment should start with '# '
-./orbotor/sputnik.py:151:39: E231 missing whitespace after ','
-./orbotor/sputnik.py:152:39: E231 missing whitespace after ','
-./orbotor/sputnik.py:153:40: E231 missing whitespace after ','
-./orbotor/sputnik.py:154:42: E231 missing whitespace after ','
-./orbotor/sputnik.py:155:41: E231 missing whitespace after ','
-./orbotor/sputnik.py:170:5: E303 too many blank lines (2)
-./orbotor/sputnik.py:179:88: E231 missing whitespace after ','
-./orbotor/sputnik.py:179:121: E501 line too long (132 > 120 characters)
-./orbotor/sputnik.py:180:9: E265 block comment should start with '# '
-./orbotor/sputnik.py:180:121: E501 line too long (127 > 120 characters)
-./orbotor/sputnik.py:182:34: E261 at least two spaces before inline comment
-./orbotor/sputnik.py:182:35: E262 inline comment should start with '# '
-./orbotor/sputnik.py:202:73: E231 missing whitespace after ','
-./orbotor/sputnik.py:207:5: E303 too many blank lines (3)
-./orbotor/sputnik.py:209:13: E265 block comment should start with '# '
-./orbotor/sputnik.py:210:13: E265 block comment should start with '# '
-./orbotor/sputnik.py:262:51: W291 trailing whitespace
-./orbotor/sputnik.py:269:56: W291 trailing whitespace
-./orbotor/sputnik.py:276:57: W291 trailing whitespace
-./orbotor/sputnik.py:283:56: W291 trailing whitespace
-./orbotor/sputnik.py:333:121: E501 line too long (168 > 120 characters)
-./orbotor/sputnik.py:348:5: E303 too many blank lines (2)
-./orbotor/sputnik.py:353:121: E501 line too long (144 > 120 characters)
-./orbotor/sputnik.py:355:81: E231 missing whitespace after ','
-./orbotor/sputnik.py:357:32: E231 missing whitespace after ','
-./orbotor/sputnik.py:363:5: E303 too many blank lines (2)
-./orbotor/sputnik.py:407:13: E265 block comment should start with '# '
-./orbotor/sputnik.py:455:13: E265 block comment should start with '# '
-./orbotor/sputnik.py:482:9: E265 block comment should start with '# '
-./orbotor/sputnik.py:510:29: E241 multiple spaces after ','
-./orbotor/sputnik.py:524:54: E231 missing whitespace after ','
-./orbotor/sputnik.py:526:17: E265 block comment should start with '# '
-./orbotor/sputnik.py:536:54: E231 missing whitespace after ','
-./orbotor/sputnik.py:538:17: E265 block comment should start with '# '
-./orbotor/sputnik.py:544:5: E303 too many blank lines (2)
-./orbotor/sputnik.py:548:9: E265 block comment should start with '# '
-./orbotor/sputnik.py:563:49: E231 missing whitespace after ','
-./orbotor/sputnik.py:580:48: E231 missing whitespace after ','
-./orbotor/sputnik.py:581:48: E231 missing whitespace after ','
-./orbotor/sputnik.py:589:49: E231 missing whitespace after ','
-./orbotor/sputnik.py:597:45: E231 missing whitespace after ','
-./orbotor/sputnik.py:629:28: W292 no newline at end of file
 ./orbotor/supply.py:17:26: W291 trailing whitespace
 ./orbotor/supply.py:20:1: E302 expected 2 blank lines, found 1
 ./orbotor/supply.py:23:10: E111 indentation is not a multiple of four
@@ -97,17 +34,11 @@
 ./orbotor/thruster.py:41:17: E265 block comment should start with '# '
 ./orbotor/thruster.py:42:99: W292 no newline at end of file
 14      E111 indentation is not a multiple of four
-1       E124 closing bracket does not match visual indentation
-1       E203 whitespace before ','
-32      E231 missing whitespace after ','
-1       E241 multiple spaces after ','
-1       E261 at least two spaces before inline comment
-1       E262 inline comment should start with '# '
-18      E265 block comment should start with '# '
-5       E302 expected 2 blank lines, found 1
-7       E303 too many blank lines (2)
-6       E501 line too long (135 > 120 characters)
+5       E231 missing whitespace after ','
+5       E265 block comment should start with '# '
+4       E302 expected 2 blank lines, found 1
+1       E501 line too long (128 > 120 characters)
 1       F401 'math' imported but unused
 1       F841 local variable 'sprite_ratio' is assigned to but never used
-6       W291 trailing whitespace
-3       W292 no newline at end of file
+2       W291 trailing whitespace
+2       W292 no newline at end of file

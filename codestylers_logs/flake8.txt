@@ -1,81 +1,4 @@
 ./orbotor/planet.py:51:13: F841 local variable 'sprite_ratio' is assigned to but never used
-./orbotor/static_functions.py:1:1: E265 block comment should start with '# '
-./orbotor/static_functions.py:27:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:34:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:42:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:50:27: E231 missing whitespace after ','
-./orbotor/static_functions.py:50:29: E231 missing whitespace after ','
-./orbotor/static_functions.py:57:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:65:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:128:16: E231 missing whitespace after ':'
-./orbotor/static_functions.py:128:31: E231 missing whitespace after ':'
-./orbotor/static_functions.py:128:49: E231 missing whitespace after ':'
-./orbotor/static_functions.py:128:68: E231 missing whitespace after ':'
-./orbotor/static_functions.py:128:87: E231 missing whitespace after ':'
-./orbotor/static_functions.py:128:108: E231 missing whitespace after ':'
-./orbotor/static_functions.py:129:5: E265 block comment should start with '# '
-./orbotor/static_functions.py:132:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:134:5: F841 local variable 'green_color' is assigned to but never used
-./orbotor/static_functions.py:135:5: F841 local variable 'ice_color' is assigned to but never used
-./orbotor/static_functions.py:139:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:147:34: E231 missing whitespace after ','
-./orbotor/static_functions.py:151:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:160:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:161:5: E265 block comment should start with '# '
-./orbotor/static_functions.py:163:5: E265 block comment should start with '# '
-./orbotor/static_functions.py:170:5: E265 block comment should start with '# '
-./orbotor/static_functions.py:171:5: E265 block comment should start with '# '
-./orbotor/static_functions.py:172:5: E265 block comment should start with '# '
-./orbotor/static_functions.py:172:121: E501 line too long (132 > 120 characters)
-./orbotor/static_functions.py:176:18: E261 at least two spaces before inline comment
-./orbotor/static_functions.py:176:19: E262 inline comment should start with '# '
-./orbotor/static_functions.py:177:55: E231 missing whitespace after ','
-./orbotor/static_functions.py:177:94: E231 missing whitespace after ','
-./orbotor/static_functions.py:185:5: E303 too many blank lines (2)
-./orbotor/static_functions.py:185:37: E261 at least two spaces before inline comment
-./orbotor/static_functions.py:185:38: E262 inline comment should start with '# '
-./orbotor/static_functions.py:185:49: W291 trailing whitespace
-./orbotor/static_functions.py:187:43: E231 missing whitespace after ','
-./orbotor/static_functions.py:192:1: E302 expected 2 blank lines, found 1
-./orbotor/static_functions.py:192:35: E261 at least two spaces before inline comment
-./orbotor/static_functions.py:192:36: E262 inline comment should start with '# '
-./orbotor/static_functions.py:198:18: E231 missing whitespace after ','
-./orbotor/static_functions.py:199:17: E231 missing whitespace after ','
-./orbotor/static_functions.py:201:21: W292 no newline at end of file
-./orbotor/supply.py:17:26: W291 trailing whitespace
-./orbotor/supply.py:20:1: E302 expected 2 blank lines, found 1
-./orbotor/supply.py:23:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:24:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:25:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:26:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:27:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:28:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:30:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:30:40: E231 missing whitespace after ','
-./orbotor/supply.py:39:21: E265 block comment should start with '# '
-./orbotor/supply.py:44:1: E302 expected 2 blank lines, found 1
-./orbotor/supply.py:47:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:48:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:49:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:50:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:51:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:52:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:54:10: E111 indentation is not a multiple of four
-./orbotor/supply.py:54:40: E231 missing whitespace after ','
-./orbotor/supply.py:63:21: E265 block comment should start with '# '
-./orbotor/team.py:21:1: E302 expected 2 blank lines, found 1
-./orbotor/team.py:30:61: E231 missing whitespace after ','
-./orbotor/team.py:30:99: E231 missing whitespace after ','
-./orbotor/team.py:30:121: E501 line too long (128 > 120 characters)
-./orbotor/team.py:49:17: E265 block comment should start with '# '
-./orbotor/team.py:54:42: W292 no newline at end of file
-./orbotor/thruster.py:17:1: F401 'math' imported but unused
-./orbotor/thruster.py:20:34: W291 trailing whitespace
-./orbotor/thruster.py:23:1: E302 expected 2 blank lines, found 1
-./orbotor/thruster.py:39:81: E231 missing whitespace after ','
-./orbotor/thruster.py:40:17: E265 block comment should start with '# '
-./orbotor/thruster.py:41:17: E265 block comment should start with '# '
-./orbotor/thruster.py:42:99: W292 no newline at end of file
 ./orbotor/sputnik.py:39:1: E302 expected 2 blank lines, found 1
 ./orbotor/sputnik.py:42:121: E501 line too long (135 > 120 characters)
 ./orbotor/sputnik.py:56:9: E265 block comment should start with '# '
@@ -139,18 +62,52 @@
 ./orbotor/sputnik.py:589:49: E231 missing whitespace after ','
 ./orbotor/sputnik.py:597:45: E231 missing whitespace after ','
 ./orbotor/sputnik.py:629:28: W292 no newline at end of file
+./orbotor/supply.py:17:26: W291 trailing whitespace
+./orbotor/supply.py:20:1: E302 expected 2 blank lines, found 1
+./orbotor/supply.py:23:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:24:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:25:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:26:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:27:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:28:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:30:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:30:40: E231 missing whitespace after ','
+./orbotor/supply.py:39:21: E265 block comment should start with '# '
+./orbotor/supply.py:44:1: E302 expected 2 blank lines, found 1
+./orbotor/supply.py:47:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:48:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:49:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:50:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:51:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:52:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:54:10: E111 indentation is not a multiple of four
+./orbotor/supply.py:54:40: E231 missing whitespace after ','
+./orbotor/supply.py:63:21: E265 block comment should start with '# '
+./orbotor/team.py:21:1: E302 expected 2 blank lines, found 1
+./orbotor/team.py:30:61: E231 missing whitespace after ','
+./orbotor/team.py:30:99: E231 missing whitespace after ','
+./orbotor/team.py:30:121: E501 line too long (128 > 120 characters)
+./orbotor/team.py:49:17: E265 block comment should start with '# '
+./orbotor/team.py:54:42: W292 no newline at end of file
+./orbotor/thruster.py:17:1: F401 'math' imported but unused
+./orbotor/thruster.py:20:34: W291 trailing whitespace
+./orbotor/thruster.py:23:1: E302 expected 2 blank lines, found 1
+./orbotor/thruster.py:39:81: E231 missing whitespace after ','
+./orbotor/thruster.py:40:17: E265 block comment should start with '# '
+./orbotor/thruster.py:41:17: E265 block comment should start with '# '
+./orbotor/thruster.py:42:99: W292 no newline at end of file
 14      E111 indentation is not a multiple of four
 1       E124 closing bracket does not match visual indentation
 1       E203 whitespace before ','
-46      E231 missing whitespace after ','
+32      E231 missing whitespace after ','
 1       E241 multiple spaces after ','
-4       E261 at least two spaces before inline comment
-4       E262 inline comment should start with '# '
-25      E265 block comment should start with '# '
-15      E302 expected 2 blank lines, found 1
-8       E303 too many blank lines (2)
-7       E501 line too long (135 > 120 characters)
+1       E261 at least two spaces before inline comment
+1       E262 inline comment should start with '# '
+18      E265 block comment should start with '# '
+5       E302 expected 2 blank lines, found 1
+7       E303 too many blank lines (2)
+6       E501 line too long (135 > 120 characters)
 1       F401 'math' imported but unused
-3       F841 local variable 'sprite_ratio' is assigned to but never used
-7       W291 trailing whitespace
-4       W292 no newline at end of file
+1       F841 local variable 'sprite_ratio' is assigned to but never used
+6       W291 trailing whitespace
+3       W292 no newline at end of file

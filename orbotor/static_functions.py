@@ -1,4 +1,4 @@
-#static_functions
+# static_functions
 #    Orbotor - arcade with orbit mechanics
 #    Copyright (C) 2014 mr555ru
 #
@@ -24,12 +24,14 @@ from pygame import *
 
 from game_constants import *
 
+
 def min_max_value(min, max, value):
     if value < min:
         return min
     elif value > max:
         return max
     return value
+
 
 def create_color_circle(color, r):
     r = int(r)
@@ -39,6 +41,7 @@ def create_color_circle(color, r):
     pygame.draw.circle(p, color, (r, r), r-int(r/5))
     return p
 
+
 def imitate_debris(color1, color2, r):
     p = Surface((r*2, r*2), flags=SRCALPHA)
     p.fill(Color("#00000000"))
@@ -47,12 +50,13 @@ def imitate_debris(color1, color2, r):
         new = random.randint(max(2, int(r/2)), max(2+int(r/5), int(r/1.5)))
         x = random.randint(new, r*2-new)
         y = random.randint(new, r*2-new)
-        places.append((new,x,y))
+        places.append((new, x, y))
     for place in places:
         pygame.draw.circle(p, color1, (place[1], place[2]), place[0])
     for place in places:
         pygame.draw.circle(p, color2, (place[1], place[2]), place[0]-int(r/5))
     return p
+
 
 def mirror_polygons(d, l):
     for name, polygon in l.items():
@@ -61,6 +65,7 @@ def mirror_polygons(d, l):
             new_polygon.append((d-x, d-y))
         l[name] = new_polygon
     return l
+
 
 def continent_polygons(r):
     d = r*2
@@ -125,16 +130,15 @@ def continent_polygons(r):
         (d*13/24, d*1/3),
         (d*14/24, d*1/3)]
     
-    l = {"Asia":Asia, "Honshu":Honshu, "England":England, "Ireland":Ireland, "America":America, "Greenland":Greenland}
-    #mirror_polygons(d, l)
+    l = {"Asia": Asia,
+         "Honshu": Honshu,
+         "England": England,
+         "Ireland": Ireland,
+         "America": America,
+         "Greenland": Greenland}
+    # mirror_polygons(d, l)
     return l
 
-def create_planet_visualisation(r):
-    ocean_color = Color("#1177FF")
-    green_color = Color("#339933")
-    ice_color = Color("#CCFFFF")
-    p = create_color_circle(ocean_color, r)
-    return p
 
 def pil_process(path, hwsurface=False):
     i = PIL_Image.open(path)
@@ -144,9 +148,10 @@ def pil_process(path, hwsurface=False):
     surface = pygame.image.fromstring(data, size, mode)
     if hwsurface:
         surface2 = Surface(size, flags=SRCALPHA+HWSURFACE)
-        surface2.blit(surface, (0,0))
+        surface2.blit(surface, (0, 0))
         surface = surface2
     return surface
+
 
 def rot_center(image, angle):
     """rotate an image while keeping its center and size"""
@@ -157,45 +162,46 @@ def rot_center(image, angle):
     rot_image = rot_image.subsurface(rot_rect).copy()
     return rot_image
 
+
 def better_rotozoom(surface, angle, zoom, offset, is_circle=False):
-    #zoom = zoom*sprite_hd_ratio
+    # zoom = zoom*sprite_hd_ratio
     
-    #offset = (center[0]-real_center[0],center[1]-real_center[1])
+    # offset = (center[0]-real_center[0],center[1]-real_center[1])
     
     r = math.sqrt(offset[0]**2 + offset[1]**2) * zoom
     ang = math.atan2(-offset[1], offset[0]) - math.radians(angle)
     
     new_offset = (r*math.cos(ang), r*math.sin(ang))
     
-    #new_surface = pygame.transform.rotozoom(surface, angle, zoom)
-    #new_surface_center = (new_surface.get_width()/2, new_surface.get_height()/2)
-    #new_offset = (new_offset[0] - new_surface_center[0]+surface_center[0], new_offset[1] - new_surface_center[1]+surface_center[1])
+    # new_surface = pygame.transform.rotozoom(surface, angle, zoom)
+    # new_surface_center = (new_surface.get_width()/2, new_surface.get_height()/2)
+    # new_offset = (new_offset[0] - new_surface_center[0]+surface_center[0], new_offset[1] - new_surface_center[1]+surface_center[1]) # NOQA
     
     new_surface = surface
     
-    if zoom != 1: #ebig performance tweaks!
-        scale_dim = (max(int(surface.get_width()*zoom),2), max(int(surface.get_height()*zoom),2))
+    if zoom != 1:  # ebig performance tweaks!
+        scale_dim = (max(int(surface.get_width()*zoom), 2), max(int(surface.get_height()*zoom), 2))
         if abs(angle) > 0.08 and not is_circle and max(scale_dim) > 2:
             new_surface = rot_center(new_surface, -angle)
         new_surface = pygame.transform.scale(new_surface, scale_dim)
     elif abs(angle) > 0.08 and not is_circle:
         new_surface = rot_center(new_surface, -angle)
         
-    
-    if surface.get_flags() % 2 == 1: #hwsurface: 
+    if surface.get_flags() % 2 == 1:  # hwsurface:
         new_surface_2 = Surface(new_surface.get_size(), new_surface.get_flags())
-        new_surface_2.blit(new_surface, (0,0))
+        new_surface_2.blit(new_surface, (0, 0))
         new_surface = new_surface_2
     
     return new_surface, new_offset
 
-def get_peri_apo(r, v, ang, G, M): #equations! via http://www.braeunig.us/space/orbmech.htm
+
+def get_peri_apo(r, v, ang, G, M):  # equations! via http://www.braeunig.us/space/orbmech.htm
     C = (2*G*M)/(r*v*v)
     
     R1 = (-C + math.sqrt(C*C - 4 * (1-C) * (-math.sin(ang)**2)))/(2 * (1-C)) * r
     R2 = (-C - math.sqrt(C*C - 4 * (1-C) * (-math.sin(ang)**2)))/(2 * (1-C)) * r
     
-    peri = min(R1,R2)
-    apo = max(R1,R2)
+    peri = min(R1, R2)
+    apo = max(R1, R2)
     
     return peri, apo

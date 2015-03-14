@@ -2,75 +2,45 @@
         D100: Docstring missing
 ./orbotor.py:24 in public function `main`:
         D103: Docstring missing
-./orbotor/static_functions.py:1 at module level:
+./orbotor/quadtree.py:1 at module level:
         D100: Docstring missing
-./orbotor/static_functions.py:27 in public function `min_max_value`:
-        D103: Docstring missing
-./orbotor/static_functions.py:34 in public function `create_color_circle`:
-        D103: Docstring missing
-./orbotor/static_functions.py:42 in public function `imitate_debris`:
-        D103: Docstring missing
-./orbotor/static_functions.py:57 in public function `mirror_polygons`:
-        D103: Docstring missing
-./orbotor/static_functions.py:65 in public function `continent_polygons`:
-        D103: Docstring missing
-./orbotor/static_functions.py:132 in public function `create_planet_visualisation`:
-        D103: Docstring missing
-./orbotor/static_functions.py:139 in public function `pil_process`:
-        D103: Docstring missing
-./orbotor/static_functions.py:151 in public function `rot_center`:
-        D400: First line should end with '.', not 'e'
-./orbotor/static_functions.py:160 in public function `better_rotozoom`:
-        D103: Docstring missing
-./orbotor/static_functions.py:192 in public function `get_peri_apo`:
-        D103: Docstring missing
-./orbotor/simplestats.py:1 at module level:
-        D100: Docstring missing
-./orbotor/simplestats.py:28 in public class `SimpleStats`:
+./orbotor/quadtree.py:1 in public class `QuadTreeObject`:
         D101: Docstring missing
-./orbotor/simplestats.py:29 in public method `__init__`:
+./orbotor/quadtree.py:3 in public method `__init__`:
         D102: Docstring missing
-./orbotor/simplestats.py:43 in public method `draw`:
+./orbotor/quadtree.py:9 in public method `step`:
         D102: Docstring missing
-./orbotor/helldebris.py:1 at module level:
-        D100: Docstring missing
-./orbotor/helldebris.py:27 in public class `HellDebris`:
+./orbotor/quadtree.py:16 in public class `QuadTreeBounds`:
         D101: Docstring missing
-./orbotor/helldebris.py:29 in public method `__init__`:
+./orbotor/quadtree.py:18 in public method `__init__`:
         D102: Docstring missing
-./orbotor/helldebris.py:33 in public method `initialspeed`:
+./orbotor/quadtree.py:27 in public method `get_width`:
         D102: Docstring missing
-./orbotor/helldebris.py:42 in public method `get_collision`:
+./orbotor/quadtree.py:30 in public method `get_height`:
         D102: Docstring missing
-./orbotor/bullet.py:1 at module level:
-        D100: Docstring missing
-./orbotor/bullet.py:23 in public class `Bullet`:
+./orbotor/quadtree.py:33 in public method `get_from_object`:
+        D102: Docstring missing
+./orbotor/quadtree.py:39 in public method `get_from_planet`:
+        D102: Docstring missing
+./orbotor/quadtree.py:46 in public class `QuadTree`:
         D101: Docstring missing
-./orbotor/bullet.py:24 in public method `__init__`:
+./orbotor/quadtree.py:48 in public method `__init__`:
         D102: Docstring missing
-./orbotor/bullet.py:49 in public method `draw`:
+./orbotor/quadtree.py:57 in public method `calculate_points`:
         D102: Docstring missing
-./orbotor/bullet.py:52 in public method `step`:
+./orbotor/quadtree.py:65 in public method `clear`:
         D102: Docstring missing
-./orbotor/bullet.py:57 in public method `get_collision`:
+./orbotor/quadtree.py:69 in public method `split`:
         D102: Docstring missing
-./orbotor/bullet.py:60 in public method `get_too_close`:
+./orbotor/quadtree.py:76 in public method `is_obj_in_me`:
         D102: Docstring missing
-./orbotor/bullet.py:63 in public method `get_too_far`:
+./orbotor/quadtree.py:79 in public method `findAppropriateNode`:
         D102: Docstring missing
-./orbotor/bullet.py:67 in public method `destroy`:
+./orbotor/quadtree.py:101 in public method `insert`:
         D102: Docstring missing
-./orbotor/nametag.py:1 at module level:
-        D100: Docstring missing
-./orbotor/nametag.py:24 in public class `Nametag`:
-        D101: Docstring missing
-./orbotor/nametag.py:26 in public method `__init__`:
+./orbotor/quadtree.py:116 in public method `reinsertlist`:
         D102: Docstring missing
-./orbotor/nametag.py:34 in public method `upd`:
-        D102: Docstring missing
-./orbotor/nametag.py:38 in public method `draw`:
-        D102: Docstring missing
-./orbotor/nametag.py:43 in public method `step`:
+./orbotor/quadtree.py:121 in public method `retrieve`:
         D102: Docstring missing
 ./orbotor/gcd.py:1 at module level:
         D100: Docstring missing
@@ -85,24 +55,6 @@
 ./orbotor/gcd.py:41 in public method `be_added`:
         D102: Docstring missing
 ./orbotor/gcd.py:44 in public method `step`:
-        D102: Docstring missing
-./orbotor/game_constants.py:1 at module level:
-        D100: Docstring missing
-./orbotor/soundsystem.py:1 at module level:
-        D100: Docstring missing
-./orbotor/soundsystem.py:22 in public class `SoundSystem`:
-        D101: Docstring missing
-./orbotor/soundsystem.py:24 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/soundsystem.py:34 in public method `initsound`:
-        D102: Docstring missing
-./orbotor/soundsystem.py:42 in public method `playsound`:
-        D102: Docstring missing
-./orbotor/soundsystem.py:46 in public method `loopsound`:
-        D102: Docstring missing
-./orbotor/soundsystem.py:52 in public method `removelooped`:
-        D102: Docstring missing
-./orbotor/soundsystem.py:57 in public method `switch`:
         D102: Docstring missing
 ./orbotor/debris.py:1 at module level:
         D100: Docstring missing
@@ -128,28 +80,40 @@
         D102: Docstring missing
 ./orbotor/debris.py:107 in public method `destroy`:
         D102: Docstring missing
+./orbotor/supply.py:1 at module level:
+        D100: Docstring missing
+./orbotor/supply.py:20 in public class `FuelSupply`:
+        D101: Docstring missing
+./orbotor/supply.py:22 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/supply.py:32 in public method `get_collision`:
+        D102: Docstring missing
+./orbotor/supply.py:44 in public class `AmmoSupply`:
+        D101: Docstring missing
+./orbotor/supply.py:46 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/supply.py:56 in public method `get_collision`:
+        D102: Docstring missing
+./orbotor/bullet.py:1 at module level:
+        D100: Docstring missing
+./orbotor/bullet.py:23 in public class `Bullet`:
+        D101: Docstring missing
+./orbotor/bullet.py:24 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/bullet.py:49 in public method `draw`:
+        D102: Docstring missing
+./orbotor/bullet.py:52 in public method `step`:
+        D102: Docstring missing
+./orbotor/bullet.py:57 in public method `get_collision`:
+        D102: Docstring missing
+./orbotor/bullet.py:60 in public method `get_too_close`:
+        D102: Docstring missing
+./orbotor/bullet.py:63 in public method `get_too_far`:
+        D102: Docstring missing
+./orbotor/bullet.py:67 in public method `destroy`:
+        D102: Docstring missing
 ./orbotor/__init__.py:1 at module level:
         D100: Docstring missing
-./orbotor/camera.py:1 at module level:
-        D100: Docstring missing
-./orbotor/camera.py:21 in public class `Camera`:
-        D101: Docstring missing
-./orbotor/camera.py:23 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/camera.py:35 in public method `translate_coords`:
-        D102: Docstring missing
-./orbotor/camera.py:65 in public method `step`:
-        D102: Docstring missing
-./orbotor/camera.py:72 in public method `keys_listen`:
-        D102: Docstring missing
-./orbotor/camera.py:87 in public method `keys_listen_hotseat`:
-        D102: Docstring missing
-./orbotor/camera.py:103 in public class `Camerable`:
-        D101: Docstring missing
-./orbotor/camera.py:104 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/camera.py:115 in public method `draw`:
-        D102: Docstring missing
 ./orbotor/sputnik.py:1 at module level:
         D100: Docstring missing
 ./orbotor/sputnik.py:39 in public class `Sputnik`:
@@ -218,48 +182,30 @@
         D102: Docstring missing
 ./orbotor/sputnik.py:627 in public method `initialspeed`:
         D102: Docstring missing
-./orbotor/team.py:1 at module level:
+./orbotor/nametag.py:1 at module level:
         D100: Docstring missing
-./orbotor/team.py:21 in public class `Team`:
+./orbotor/nametag.py:24 in public class `Nametag`:
         D101: Docstring missing
-./orbotor/team.py:22 in public method `__init__`:
+./orbotor/nametag.py:26 in public method `__init__`:
         D102: Docstring missing
-./orbotor/team.py:35 in public method `objectslist`:
+./orbotor/nametag.py:34 in public method `upd`:
         D102: Docstring missing
-./orbotor/team.py:41 in public method `set_opponent_team`:
+./orbotor/nametag.py:38 in public method `draw`:
         D102: Docstring missing
-./orbotor/team.py:45 in public method `step`:
+./orbotor/nametag.py:43 in public method `step`:
         D102: Docstring missing
-./orbotor/planet.py:1 at module level:
+./orbotor/helldebris.py:1 at module level:
         D100: Docstring missing
-./orbotor/planet.py:24 in public class `Planet`:
+./orbotor/helldebris.py:27 in public class `HellDebris`:
         D101: Docstring missing
-./orbotor/planet.py:26 in public method `__init__`:
+./orbotor/helldebris.py:29 in public method `__init__`:
         D102: Docstring missing
-./orbotor/planet.py:61 in public method `calc_polygons`:
+./orbotor/helldebris.py:33 in public method `initialspeed`:
         D102: Docstring missing
-./orbotor/planet.py:76 in public method `draw`:
+./orbotor/helldebris.py:42 in public method `get_collision`:
         D102: Docstring missing
-./orbotor/planet.py:102 in public class `City`:
-        D101: Docstring missing
-./orbotor/planet.py:104 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/planet.py:114 in public method `draw`:
-        D102: Docstring missing
-./orbotor/supply.py:1 at module level:
+./orbotor/game_constants.py:1 at module level:
         D100: Docstring missing
-./orbotor/supply.py:20 in public class `FuelSupply`:
-        D101: Docstring missing
-./orbotor/supply.py:22 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/supply.py:32 in public method `get_collision`:
-        D102: Docstring missing
-./orbotor/supply.py:44 in public class `AmmoSupply`:
-        D101: Docstring missing
-./orbotor/supply.py:46 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/supply.py:56 in public method `get_collision`:
-        D102: Docstring missing
 ./orbotor/gameprofile.py:1 at module level:
         D100: Docstring missing
 ./orbotor/gameprofile.py:50 in public class `Profile`:
@@ -288,6 +234,46 @@
         D103: Docstring missing
 ./orbotor/gameprofile.py:248 in public function `CoopSurvivalProfile`:
         D103: Docstring missing
+./orbotor/thruster.py:1 at module level:
+        D100: Docstring missing
+./orbotor/thruster.py:23 in public class `Thruster`:
+        D101: Docstring missing
+./orbotor/thruster.py:24 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/thruster.py:33 in public method `draw`:
+        D102: Docstring missing
+./orbotor/team.py:1 at module level:
+        D100: Docstring missing
+./orbotor/team.py:21 in public class `Team`:
+        D101: Docstring missing
+./orbotor/team.py:22 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/team.py:35 in public method `objectslist`:
+        D102: Docstring missing
+./orbotor/team.py:41 in public method `set_opponent_team`:
+        D102: Docstring missing
+./orbotor/team.py:45 in public method `step`:
+        D102: Docstring missing
+./orbotor/camera.py:1 at module level:
+        D100: Docstring missing
+./orbotor/camera.py:21 in public class `Camera`:
+        D101: Docstring missing
+./orbotor/camera.py:23 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/camera.py:35 in public method `translate_coords`:
+        D102: Docstring missing
+./orbotor/camera.py:65 in public method `step`:
+        D102: Docstring missing
+./orbotor/camera.py:72 in public method `keys_listen`:
+        D102: Docstring missing
+./orbotor/camera.py:87 in public method `keys_listen_hotseat`:
+        D102: Docstring missing
+./orbotor/camera.py:103 in public class `Camerable`:
+        D101: Docstring missing
+./orbotor/camera.py:104 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/camera.py:115 in public method `draw`:
+        D102: Docstring missing
 ./orbotor/helldebris_collection.py:1 at module level:
         D100: Docstring missing
 ./orbotor/helldebris_collection.py:24 in public class `HellDebrisCollection`:
@@ -300,45 +286,13 @@
         D102: Docstring missing
 ./orbotor/helldebris_collection.py:45 in public method `step`:
         D102: Docstring missing
-./orbotor/quadtree.py:1 at module level:
+./orbotor/simplestats.py:1 at module level:
         D100: Docstring missing
-./orbotor/quadtree.py:1 in public class `QuadTreeObject`:
+./orbotor/simplestats.py:28 in public class `SimpleStats`:
         D101: Docstring missing
-./orbotor/quadtree.py:3 in public method `__init__`:
+./orbotor/simplestats.py:29 in public method `__init__`:
         D102: Docstring missing
-./orbotor/quadtree.py:9 in public method `step`:
-        D102: Docstring missing
-./orbotor/quadtree.py:16 in public class `QuadTreeBounds`:
-        D101: Docstring missing
-./orbotor/quadtree.py:18 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/quadtree.py:27 in public method `get_width`:
-        D102: Docstring missing
-./orbotor/quadtree.py:30 in public method `get_height`:
-        D102: Docstring missing
-./orbotor/quadtree.py:33 in public method `get_from_object`:
-        D102: Docstring missing
-./orbotor/quadtree.py:39 in public method `get_from_planet`:
-        D102: Docstring missing
-./orbotor/quadtree.py:46 in public class `QuadTree`:
-        D101: Docstring missing
-./orbotor/quadtree.py:48 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/quadtree.py:57 in public method `calculate_points`:
-        D102: Docstring missing
-./orbotor/quadtree.py:65 in public method `clear`:
-        D102: Docstring missing
-./orbotor/quadtree.py:69 in public method `split`:
-        D102: Docstring missing
-./orbotor/quadtree.py:76 in public method `is_obj_in_me`:
-        D102: Docstring missing
-./orbotor/quadtree.py:79 in public method `findAppropriateNode`:
-        D102: Docstring missing
-./orbotor/quadtree.py:101 in public method `insert`:
-        D102: Docstring missing
-./orbotor/quadtree.py:116 in public method `reinsertlist`:
-        D102: Docstring missing
-./orbotor/quadtree.py:121 in public method `retrieve`:
+./orbotor/simplestats.py:43 in public method `draw`:
         D102: Docstring missing
 ./orbotor/orbitable.py:1 at module level:
         D100: Docstring missing
@@ -368,14 +322,6 @@
         D102: Docstring missing
 ./orbotor/orbitable.py:123 in public method `exclude`:
         D102: Docstring missing
-./orbotor/thruster.py:1 at module level:
-        D100: Docstring missing
-./orbotor/thruster.py:23 in public class `Thruster`:
-        D101: Docstring missing
-./orbotor/thruster.py:24 in public method `__init__`:
-        D102: Docstring missing
-./orbotor/thruster.py:33 in public method `draw`:
-        D102: Docstring missing
 ./orbotor/attachment.py:1 at module level:
         D100: Docstring missing
 ./orbotor/attachment.py:23 in public class `Attachment`:
@@ -387,4 +333,56 @@
 ./orbotor/attachment.py:43 in public method `draw`:
         D102: Docstring missing
 ./orbotor/attachment.py:49 in public method `step`:
+        D102: Docstring missing
+./orbotor/static_functions.py:1 at module level:
+        D100: Docstring missing
+./orbotor/static_functions.py:28 in public function `min_max_value`:
+        D103: Docstring missing
+./orbotor/static_functions.py:36 in public function `create_color_circle`:
+        D103: Docstring missing
+./orbotor/static_functions.py:45 in public function `imitate_debris`:
+        D103: Docstring missing
+./orbotor/static_functions.py:61 in public function `mirror_polygons`:
+        D103: Docstring missing
+./orbotor/static_functions.py:70 in public function `continent_polygons`:
+        D103: Docstring missing
+./orbotor/static_functions.py:143 in public function `pil_process`:
+        D103: Docstring missing
+./orbotor/static_functions.py:156 in public function `rot_center`:
+        D400: First line should end with '.', not 'e'
+./orbotor/static_functions.py:166 in public function `better_rotozoom`:
+        D103: Docstring missing
+./orbotor/static_functions.py:198 in public function `get_peri_apo`:
+        D103: Docstring missing
+./orbotor/planet.py:1 at module level:
+        D100: Docstring missing
+./orbotor/planet.py:24 in public class `Planet`:
+        D101: Docstring missing
+./orbotor/planet.py:26 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/planet.py:61 in public method `calc_polygons`:
+        D102: Docstring missing
+./orbotor/planet.py:76 in public method `draw`:
+        D102: Docstring missing
+./orbotor/planet.py:102 in public class `City`:
+        D101: Docstring missing
+./orbotor/planet.py:104 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/planet.py:114 in public method `draw`:
+        D102: Docstring missing
+./orbotor/soundsystem.py:1 at module level:
+        D100: Docstring missing
+./orbotor/soundsystem.py:22 in public class `SoundSystem`:
+        D101: Docstring missing
+./orbotor/soundsystem.py:24 in public method `__init__`:
+        D102: Docstring missing
+./orbotor/soundsystem.py:34 in public method `initsound`:
+        D102: Docstring missing
+./orbotor/soundsystem.py:42 in public method `playsound`:
+        D102: Docstring missing
+./orbotor/soundsystem.py:46 in public method `loopsound`:
+        D102: Docstring missing
+./orbotor/soundsystem.py:52 in public method `removelooped`:
+        D102: Docstring missing
+./orbotor/soundsystem.py:57 in public method `switch`:
         D102: Docstring missing

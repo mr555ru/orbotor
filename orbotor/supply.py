@@ -14,20 +14,21 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from debris import Debris 
+from debris import Debris
 from static_functions import *
+
 
 class FuelSupply(Debris):
     
     def __init__(self, x, y, dx, dy):
-         Debris.__init__(self, x, y, dx, dy)
-         self.r = 9
-         self.sprite = create_color_circle(Color("#B09050"), self.r*self.scaling)
-         self.repr = "FuelSupply"
-         self.m = 16*FUEL_MASS
-         self.is_circle = True
-         
-         self.soundsys.initsound('fuel',"fuelsupply.wav")
+        Debris.__init__(self, x, y, dx, dy)
+        self.r = 9
+        self.sprite = create_color_circle(Color("#B09050"), self.r*self.scaling)
+        self.repr = "FuelSupply"
+        self.m = 16*FUEL_MASS
+        self.is_circle = True
+        
+        self.soundsys.initsound('fuel', "fuelsupply.wav")
          
     def get_collision(self, other, vel, ang):
         if other.repr == "Sputnik":
@@ -36,22 +37,23 @@ class FuelSupply(Debris):
                     other.refuel()
                     if self.hearable:
                         self.soundsys.playsound('fuel')
-                    #print "Bless you with fuel!"
+                    # print "Bless you with fuel!"
                 else:
                     other.destroy(reason=self.repr)
         self.destroy()
         
+        
 class AmmoSupply(Debris):
     
     def __init__(self, x, y, dx, dy):
-         Debris.__init__(self, x, y, dx, dy)
-         self.r = 9
-         self.sprite = create_color_circle(Color("#44DDDD"), self.r*self.scaling)
-         self.repr = "AmmoSupply"
-         self.m = 16*BULLET_MASS
-         self.is_circle = True
+        Debris.__init__(self, x, y, dx, dy)
+        self.r = 9
+        self.sprite = create_color_circle(Color("#44DDDD"), self.r*self.scaling)
+        self.repr = "AmmoSupply"
+        self.m = 16*BULLET_MASS
+        self.is_circle = True
          
-         self.soundsys.initsound('ammo',"ammosupply.wav")
+        self.soundsys.initsound('ammo', "ammosupply.wav")
          
     def get_collision(self, other, vel, ang):
         if other.repr == "Sputnik":
@@ -60,7 +62,7 @@ class AmmoSupply(Debris):
                     other.reload()
                     if self.hearable:
                         self.soundsys.playsound('ammo')
-                    #print "Bless you with ammo!"
+                    # print "Bless you with ammo!"
                 else:
                     other.destroy(reason=self.repr)
         self.destroy()

@@ -48,7 +48,7 @@ class Planet(Camerable):
             self.polygons = continent_polygons(self.r)
         else:
             self.sprite = pil_process(os.path.join("images", sprite), hwsurface=True)
-            sprite_ratio = float(self.sprite.get_height())/self.sprite.get_width()
+            # sprite_ratio = float(self.sprite.get_height())/self.sprite.get_width()
 
         self.cities = [City(self, "London", -0.35, 0.79),
                        City(self, "Paris", 1, 0.9),

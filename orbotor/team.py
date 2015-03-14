@@ -18,6 +18,7 @@ import random
 
 from sputnik import Sputnik
 
+
 class Team():
     def __init__(self, name, color, participants, spawn, planet):
         self.guys = []
@@ -27,7 +28,10 @@ class Team():
         self.color = color
         self.maxfrags = 0
         for i in xrange(participants):
-            guy = Sputnik(color, spawn[0] + random.randint(0,300)-100, spawn[1] + random.randint(0,600)-300, planet, is_ai=True)
+            guy = Sputnik(color,
+                          spawn[0] + random.randint(0, 300)-100,
+                          spawn[1] + random.randint(0, 600)-300,
+                          planet, is_ai=True)
             guy.initialspeed(planet.m, planet.x, planet.y)
             print "%s entered %s team" % (guy.name, self.name)
             self.guys.append(guy)
@@ -46,7 +50,7 @@ class Team():
         for guy in self.guys:
             if guy.team_notice_dead:
                 self.deaths += 1
-                #print "%s team %d deaths" % (self.name, self.deaths)
+                # print "%s team %d deaths" % (self.name, self.deaths)
                 guy.team_notice_dead = False
             guy.affected(self.planet.m, self.planet.x, self.planet.y)
             guy.step()

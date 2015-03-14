@@ -82,17 +82,17 @@
         D102: Docstring missing
 ./orbotor/supply.py:1 at module level:
         D100: Docstring missing
-./orbotor/supply.py:20 in public class `FuelSupply`:
+./orbotor/supply.py:21 in public class `FuelSupply`:
         D101: Docstring missing
-./orbotor/supply.py:22 in public method `__init__`:
+./orbotor/supply.py:23 in public method `__init__`:
         D102: Docstring missing
-./orbotor/supply.py:32 in public method `get_collision`:
+./orbotor/supply.py:33 in public method `get_collision`:
         D102: Docstring missing
-./orbotor/supply.py:44 in public class `AmmoSupply`:
+./orbotor/supply.py:46 in public class `AmmoSupply`:
         D101: Docstring missing
-./orbotor/supply.py:46 in public method `__init__`:
+./orbotor/supply.py:48 in public method `__init__`:
         D102: Docstring missing
-./orbotor/supply.py:56 in public method `get_collision`:
+./orbotor/supply.py:58 in public method `get_collision`:
         D102: Docstring missing
 ./orbotor/bullet.py:1 at module level:
         D100: Docstring missing
@@ -244,15 +244,15 @@
         D102: Docstring missing
 ./orbotor/team.py:1 at module level:
         D100: Docstring missing
-./orbotor/team.py:21 in public class `Team`:
+./orbotor/team.py:22 in public class `Team`:
         D101: Docstring missing
-./orbotor/team.py:22 in public method `__init__`:
+./orbotor/team.py:23 in public method `__init__`:
         D102: Docstring missing
-./orbotor/team.py:35 in public method `objectslist`:
+./orbotor/team.py:39 in public method `objectslist`:
         D102: Docstring missing
-./orbotor/team.py:41 in public method `set_opponent_team`:
+./orbotor/team.py:45 in public method `set_opponent_team`:
         D102: Docstring missing
-./orbotor/team.py:45 in public method `step`:
+./orbotor/team.py:49 in public method `step`:
         D102: Docstring missing
 ./orbotor/camera.py:1 at module level:
         D100: Docstring missing

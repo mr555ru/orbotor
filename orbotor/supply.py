@@ -18,6 +18,9 @@ from debris import Debris
 from static_functions import *
 
 
+MIN_VELOCITY = 4
+
+
 class FuelSupply(Debris):
     
     def __init__(self, x, y, dx, dy):
@@ -33,7 +36,7 @@ class FuelSupply(Debris):
     def get_collision(self, other, vel, ang):
         if other.repr == "Sputnik":
             if other.spawned:
-                if vel < 2:
+                if vel < MIN_VELOCITY:
                     other.refuel()
                     if self.hearable:
                         self.soundsys.playsound('fuel')
@@ -58,7 +61,7 @@ class AmmoSupply(Debris):
     def get_collision(self, other, vel, ang):
         if other.repr == "Sputnik":
             if other.spawned:
-                if vel < 2:
+                if vel < MIN_VELOCITY:
                     other.reload()
                     if self.hearable:
                         self.soundsys.playsound('ammo')

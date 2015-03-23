@@ -20,14 +20,27 @@ from orbitable import Orbitable, GCD_Singleton
 from static_functions import *
 
 debris_collection = [imitate_debris(DEBRIS_COLORS[0],
-                     DEBRIS_COLORS[1],
-                     int(DEBRIS_R*DEBRIS_SCALING)) for i in xrange(30)]
+                     DEBRIS_COLORS[1],                                   # generating collection of debris sprites,
+                     int(DEBRIS_R*DEBRIS_SCALING)) for i in xrange(30)]  # to not generate them on-fly
 
 SPARKSPRITE = create_color_circle(Color("#FFFFAA"), 2*DEBRIS_SCALING)
 
 
 class Debris(Orbitable):
+    """Class for space debris that is generated after destruction of spaceships
+    (not the one that is rotating opposite direction, that's hell debris).
+    Implements Orbitable interface, so it is orbitable.
+    
+    Redefines Orbitable methods: draw, get_collision, get_too_close, get_too_far.
+    New method destroy(): called on destroying debris.
+    
+    New instance variables relative to Orbitable:
+    
+    children: list of all debrises that are been created after this one collided to something.
+    
+    """
     def __init__(self, x, y, dx, dy):
+        """Constructor is pretty straightforward."""
         Orbitable.__init__(self, x, y, r=DEBRIS_R, m=2, dx=0, dy=0, ang=0, dang=0, nocollidesteps=45, colliding=False)
         self.repr = "Debris"
         self.scaling = DEBRIS_SCALING
@@ -53,11 +66,20 @@ class Debris(Orbitable):
     #    self.colliding = self.nocollide == 0 and self.hearable
         
     def draw(self, screen, t_x, t_y, t_ang, t_zoom):
+        """Redefining draw method, it's pretty standard."""
         t_zoom = t_zoom/self.scaling
         self.derivative, offsets = better_rotozoom(self.sprite, t_ang, t_zoom, (self.sprite_off_x, self.sprite_off_y))
         screen.blit(self.derivative, (t_x-self.drawdx*t_zoom-offsets[0], t_y-self.drawdy*t_zoom-offsets[1]))
             
     def get_collision(self, other, vel, ang):
+        """Redefining get_collision method.
+           Debris has a chance to create new debris if colliding with something other than spark
+           and if GCD_Singleton is not on it's "loosening" mode.
+           
+           other - object with which happened the collision,
+           vel - velocity of impact
+           ang - angle of impact
+        """
         if other.repr != "Spark" and not GCD_Singleton.loosening:
             if random.randint(0, 4) == 0:
                 m = 0
@@ -73,20 +95,27 @@ class Debris(Orbitable):
             self.destroy()
 
     def get_too_close(self):
+        """Called when debris falls on planet."""
         self.destroy()
 
     def get_too_far(self):
+        """Called when debris leaves orbit space."""
         if random.randint(0, 200) == 0:
             self.destroy()
 
     def destroy(self):
+        """Destroy debris."""
         self.exclude()
         self.colliding = False
         # print "debris destroyed"
         
         
 class Spark(Debris):
+    """Sparks are little visual things that are visible after some impacts
+    for a short time. The faster the impact, the shorter they live.
+    They do not collide with anything."""
     def __init__(self, x, y, dx, dy, impulse, ang):
+        """Constructor. Uses impact velocity as impulse to calculate spark's lifetime."""
         Debris.__init__(self, x, y, dx, dy)
         self.sprite = SPARKSPRITE
         self.set_drawdelta()
@@ -100,9 +129,11 @@ class Spark(Debris):
         self.is_circle = True
         
     def step(self):
+        """Redefining step: it's all about how long they live."""
         Debris.step(self)
         if pygame.time.get_ticks() - self.deathtime > 0:
             self.destroy()
             
     def destroy(self):
+        """Destroy the spark."""
         self.exclude()

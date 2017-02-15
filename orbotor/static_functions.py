@@ -144,7 +144,7 @@ def pil_process(path, hwsurface=False):
     i = PIL_Image.open(path)
     mode = i.mode
     size = i.size
-    data = i.tostring()
+    data = i.tobytes()
     surface = pygame.image.fromstring(data, size, mode)
     if hwsurface:
         surface2 = Surface(size, flags=SRCALPHA+HWSURFACE)
